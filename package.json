@@ -1,0 +1,17 @@
+{
+  "name": "Agri",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "author": "hari",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.16.1",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.4",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1"
+  }
+}
