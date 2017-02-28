@@ -49,7 +49,7 @@ app.use('/log', log);
 
 // Index Route
 app.get('/', (req, res) => {
-  res.send('Invalid Endpoint');
+  res.send('Welcome !!!');
 });
 
 // Start Server
