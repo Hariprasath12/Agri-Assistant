@@ -51,6 +51,9 @@ app.use('/log', log);
 app.get('/', (req, res) => {
   res.send('Welcome !!!');
 });
+app.get('/about', (req, res) => {
+  res.send('about');
+});
 
 // Start Server
 app.listen(port, () => {
