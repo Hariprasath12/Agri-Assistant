@@ -7,7 +7,7 @@ const UserSchema = mongoose.Schema({
     },
     phone: {
         type: Number,
-        required: true,
+        
         unique: true
     },
 
@@ -17,19 +17,19 @@ const UserSchema = mongoose.Schema({
     },
     address: {
         type: String,
-        required: true
+        
     },
     acres: {
         type: String,
-        reqiured: true
+        
     },
     irr: {
         type: String,
-        required: true
+     
     },
     farm: {
         type: String,
-        required: true
+       
     }, crops: 
         [{
             id: String,

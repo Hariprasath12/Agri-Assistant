@@ -9,6 +9,8 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { HomeComponent } from './component/home/home.component';
 
+// import {ValidateService} from './servies/validate.service';
+import {AuthService} from './servies/auth.service';
 
 
 const appRoutes: Routes =  [
@@ -32,11 +34,10 @@ const appRoutes: Routes =  [
   imports: [
     BrowserModule,
     FormsModule,
-   
-     HttpModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
