@@ -1,24 +1,75 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
-
-// User Schema
 const UserSchema = mongoose.Schema({
-  name: {
-    type: String
-  },
-  email: {
-    type: String,
-    required: true
-  },
-  username: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
+    name: {
+        type: String
+    },
+    phone: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+
+    password: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    acres: {
+        type: String,
+        reqiured: true
+    },
+    irr: {
+        type: String,
+        required: true
+    },
+    farm: {
+        type: String,
+        required: true
+    }, crops: 
+        [{
+            id: String,
+            crop: String
+        }]
+    ,
+    cropdiary: [{
+        id: String,
+        date: {type:Date,default: Date.now},
+       
+        des: String,
+        By: String
+    }],
+    product:[{
+      id:String,
+      name:String,
+      quantity:String,
+      Active:Boolean,
+      img:[],
+      date:Date,
+ 
+
+ }],
+ payment:Number,
+ pay_his:[{
+  id:String,
+  amount:Number,
+  to:Number,
+  from:Number,
+  date:{type:Date,default: Date.now}
+  
+ }],
+ loc: {
+    type: [Number],  
+    index: '2d'      
+    },
+    img:String,
+    reg_date:{type:Date,default: Date.now},
+    verify: { type: Boolean, default: false }
+   
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -28,7 +79,7 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.getUserByUsername = function(username, callback){
-  const query = {username: username}
+  const query = {phone: username}
   User.findOne(query, callback);
 }
 

@@ -24,7 +24,7 @@ const app = express();
 const users = require('./routes/users');
 const agri = require('./routes/agri');
 const log = require('./routes/log');
-
+const ret = require('./routes/ret');
 // Port Number
 const port = 3000;
 
@@ -46,7 +46,7 @@ require('./config/passport')(passport);
 app.use('/users', users);
 app.use('/agri', agri);
 app.use('/log', log);
-
+app.use('/ret', ret);
 // Index Route
 app.get('/', (req, res) => {
   res.send('Welcome !!!');
