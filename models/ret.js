@@ -4,21 +4,48 @@ const config = require('../config/database');
 
 // User Schema
 const UserSchema = mongoose.Schema({
-  name: {
+ name: {
     type: String
   },
   email: {
     type: String,
     required: true
   },
-  username: {
-    type: String,
-    required: true
-  },
+  address: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: Number,
+        required: true,
+        unique: true
+    },
   password: {
     type: String,
     required: true
-  }
+  },
+  companyname:String,
+  img:String,
+  product:[{
+    id:String,
+    from:String,
+    price:String,
+    date:{ type: Boolean, default: false }
+
+  }],
+  payment:Number,
+  payment_his:[{
+    to:String,
+    from:String,
+    date:{ type: Boolean, default: false }
+  }],
+  review:[
+  {
+    id:String,
+    stars:Number,
+    cmt:String
+
+  }]
 });
 
 const User = module.exports = mongoose.model('ret', UserSchema);
@@ -28,7 +55,7 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.getUserByUsername = function(username, callback){
-  const query = {username: username}
+  const query = {email: username}
   User.findOne(query, callback);
 }
 

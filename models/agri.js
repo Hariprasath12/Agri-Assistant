@@ -41,7 +41,7 @@ const UserSchema = mongoose.Schema({
        date: { type: Date, default: Date.now},
         review:[{
           id:String,
-          stars:String,
+          stars:Number,
           cmt:String
         }]
   }]

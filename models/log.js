@@ -11,10 +11,11 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  username: {
+ phone: {
     type: String,
     required: true
   },
+  
   password: {
     type: String,
     required: true
@@ -28,7 +29,7 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.getUserByUsername = function(username, callback){
-  const query = {username: username}
+  const query = {email: username}
   User.findOne(query, callback);
 }
 
