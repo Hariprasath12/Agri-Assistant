@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../servies/auth.service';
 import{Router} from '@angular/router';
 import 'rxjs/add/operator/map';
+import {FlashMessagesService} from 'angular2-flash-messages';
+
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,11 +18,12 @@ password:String;
 irr:String;
 phone:Number;
 soil:String;
-str:Any;
+
 
 
   constructor(private authService:AuthService,
-  	private router:Router) { }
+  	private router:Router,
+     private flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
   }
@@ -36,18 +41,17 @@ str:Any;
 
   this.authService.registerUser(user).subscribe(data => {
   	
-    let obj: Any = JSON.parse(data._body);
-    console.log(obj.success);
+  
     //console.log(obj.myNumber); 
      
       //console.log(data._body);
  
-      if(obj.success){
-  		console.log("success");
+      if(data.success){
+  		  this.flashMessage.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
   		this.router.navigate(['/login']);
   	}
   	else{
-  		console.log("failed");
+  		this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
 	this.router.navigate(['/register']);
   	}
 

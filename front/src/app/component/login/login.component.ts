@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../servies/auth.service';
 import{Router} from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import 'rxjs/add/operator/map';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,8 +14,9 @@ export class LoginComponent implements OnInit {
 phone:Number;
 password:String;
   constructor(private authService:AuthService,
-  	private router:Router) { }
-
+  	private router:Router,
+    private flashMessage:FlashMessagesService) { }
+ 
   ngOnInit() {
   }
 onLoginSubmit(){
@@ -21,15 +25,20 @@ onLoginSubmit(){
 		password:this.password
 	}
 	this.authService.authenticateUser(user).subscribe(data=>{
-console.log(data);
-let obj = JSON.parse(data._body);
+
+// let obj = JSON.parse(data._body);
    
-      if(obj.success){
-  		this.authService.storeUserData(obj.token,obj.user);
+      if(data.success){
+  		this.authService.storeUserData(data.token,data.user);
+      this.flashMessage.show('You are now logged in', {
+          cssClass: 'alert-success',
+          timeout: 5000});
   		this.router.navigate(['/dashboard']);
   	}
   	else{
-  		console.log("failed");
+  this.flashMessage.show(data.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000});
 	this.router.navigate(['/login']);
   	}
 	});
