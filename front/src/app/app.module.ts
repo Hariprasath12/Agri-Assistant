@@ -11,13 +11,14 @@ import { HomeComponent } from './component/home/home.component';
 
 // import {ValidateService} from './servies/validate.service';
 import {AuthService} from './servies/auth.service';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
- 
+  {path:'dashboard', component: DashboardComponent},
  
 ]
 
@@ -29,7 +30,8 @@ const appRoutes: Routes =  [
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

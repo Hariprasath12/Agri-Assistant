@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../servies/auth.service';
 import{Router} from '@angular/router';
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,6 +14,7 @@ password:String;
 irr:String;
 phone:Number;
 soil:String;
+str:Any;
 
 
   constructor(private authService:AuthService,
@@ -21,20 +23,26 @@ soil:String;
   ngOnInit() {
   }
   onRegisterSubmit(){
-  	const x={
+  	const user={
   		name:this.name,
   		phone:this.phone,
   		password:this.password
 
   	}
   
-   const user=JSON.stringify(x);
+   // const user=JSON.stringify(x);
   //register user
-  console.log(user);
+  // console.log(user);
 
   this.authService.registerUser(user).subscribe(data => {
-  	console.log(data);
-      if(data.success){
+  	
+    let obj: Any = JSON.parse(data._body);
+    console.log(obj.success);
+    //console.log(obj.myNumber); 
+     
+      //console.log(data._body);
+ 
+      if(obj.success){
   		console.log("success");
   		this.router.navigate(['/login']);
   	}
