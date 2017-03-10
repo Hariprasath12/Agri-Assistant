@@ -14,8 +14,7 @@ router.post('/register', (req, res, next) => {
    soiltype:req.body.soiltype,
    irr:req.body.irr,
    farm:req.body.farm,
-   loc:req.body.loc,
-   img:req.body.img,
+   acres:req.body.acres,
    password: req.body.password
   });
 
@@ -30,7 +29,7 @@ router.post('/register', (req, res, next) => {
 
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
-  const username = req.body.username;
+  const username = req.body.phone;
   const password = req.body.password;
 
   User.getUserByUsername(username, (err, user) => {

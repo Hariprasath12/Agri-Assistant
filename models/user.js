@@ -30,7 +30,8 @@ const UserSchema = mongoose.Schema({
     farm: {
         type: String,
        
-    }, crops: 
+    }, 
+    crops: 
         [{
             id: String,
             crop: String

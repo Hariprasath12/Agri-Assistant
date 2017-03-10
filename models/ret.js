@@ -9,22 +9,23 @@ const UserSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+  
   },
   address: {
         type: String,
-        required: true
+        
     },
     phone: {
         type: Number,
-        required: true,
+       
         unique: true
     },
-  password: {
+ password: {
     type: String,
-    required: true
+  
   },
   companyname:String,
+  companytype:String,
   img:String,
   product:[{
     id:String,

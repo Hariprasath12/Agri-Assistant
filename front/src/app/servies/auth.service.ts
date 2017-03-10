@@ -16,11 +16,47 @@ export class AuthService {
     return this.http.post('http://localhost:3000/users/register', user,{headers: headers})
       .map(res => res.json());
   }
+   registeragri(user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/agri/register', user,{headers: headers})
+      .map(res => res.json());
+  }
+   registerlog(user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/log/register', user,{headers: headers})
+      .map(res => res.json());
+  }
+   registerret(user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/register', user,{headers: headers})
+      .map(res => res.json());
+  }
 
   authenticateUser(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user,{headers: headers})
+      .map(res => res.json());
+  }
+   authenticateagri(user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/agri/authenticate', user,{headers: headers})
+      .map(res => res.json());
+  }
+   authenticatelog(user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/log/authenticate', user,{headers: headers})
+      .map(res => res.json());
+  }
+   authenticateret(user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/authenticate', user,{headers: headers})
       .map(res => res.json());
   }
 
@@ -53,5 +89,6 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+     
   }
 }
