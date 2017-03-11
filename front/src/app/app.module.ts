@@ -9,7 +9,7 @@ import { HomeComponent } from './component/home/home.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 // import {ValidateService} from './servies/validate.service';
 import {AuthService} from './servies/auth.service';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
+
 import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './component/about/about.component';
 import { agriDashboardComponent } from './component/agri/dashboard/dashboard.component';
@@ -37,7 +37,10 @@ const appRoutes: Routes =  [
    },
    {path:'login',
     component: userLoginComponent
-  },
+  },{path:'dashboard',
+    component: userDashboardComponent,
+    canActivate:[AuthGuard]
+  }
 
 
    ]},
@@ -48,7 +51,10 @@ const appRoutes: Routes =  [
    },
    {path:'login',
     component: agriLoginComponent
-  },
+  },{path:'dashboard',
+    component: agriDashboardComponent,
+    canActivate:[AuthGuard]
+  }
 
 
    ]},
@@ -59,7 +65,10 @@ const appRoutes: Routes =  [
    },
    {path:'login',
     component: logLoginComponent
-  },
+  },{path:'dashboard',
+    component: logDashboardComponent,
+    canActivate:[AuthGuard]
+  }
 
 
    ]},
@@ -70,12 +79,15 @@ const appRoutes: Routes =  [
    },
    {path:'login',
     component: retLoginComponent
-  },
+  }, {path:'dashboard',
+    component: retDashboardComponent,
+    canActivate:[AuthGuard]
+  }
 
 
    ]},
 {path:'about', component: AboutComponent},
-{path:'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
+
  
 ]
 
@@ -89,7 +101,7 @@ const appRoutes: Routes =  [
     HomeComponent,
     
     AboutComponent,
-    DashboardComponent,
+  
     userDashboardComponent,
     userLoginComponent,
     userRegisterComponent,
