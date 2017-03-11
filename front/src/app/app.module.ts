@@ -24,11 +24,18 @@ import { retRegisterComponent } from './component/ret/register/register.componen
 import { userDashboardComponent } from './component/user/dashboard/dashboard.component';
 import { userLoginComponent } from './component/user/login/login.component';
 import { userRegisterComponent } from './component/user/register/register.component';
+import { AgriprofileComponent } from './component/agri/agriprofile/agriprofile.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { LogprofileComponent } from './component/log/logprofile/logprofile.component';
+import { RetprofileComponent } from './component/ret/retprofile/retprofile.component';
+import { UserprofileComponent } from './component/user/userprofile/userprofile.component';
 
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
-
+{path:'login', component: LoginComponent },
+{path:'register', component:  RegisterComponent},
 
    {path:'user',
    children:[{
@@ -53,6 +60,10 @@ const appRoutes: Routes =  [
     component: agriLoginComponent
   },{path:'dashboard',
     component: agriDashboardComponent,
+    canActivate:[AuthGuard]
+  },
+  {path:'profile',
+    component: AgriprofileComponent,
     canActivate:[AuthGuard]
   }
 
@@ -113,7 +124,13 @@ const appRoutes: Routes =  [
     retRegisterComponent,
     agriDashboardComponent,
     agriLoginComponent,
-    agriRegisterComponent
+    agriRegisterComponent,
+    AgriprofileComponent,
+    LoginComponent,
+    RegisterComponent,
+    LogprofileComponent,
+    RetprofileComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
