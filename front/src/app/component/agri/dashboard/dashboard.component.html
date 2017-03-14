@@ -1,4 +1,16 @@
-<div *ngIf="user">
-<h2 class="page-header">{{user.name}} </h2>
-<p> {{user.phone}}</p>
- </div>
+<div class="container-fluid" id="subnav"> 
+<ul> 
+ <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard']">Dashboard</a></li>
+<li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/profile']">Profile</a></li>	
+ <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/chat']">Chat</a></li>
+<li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/post']">Post</a></li>
+ <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/review']">Review</a></li>
+<span  *ngIf="user">
+<li>{{user.name}}</li>
+</span>
+</ul>
+ <router-outlet></router-outlet>
+
+
+
+</div>

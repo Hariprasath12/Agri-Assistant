@@ -7,9 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './component/home/home.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
-// import {ValidateService} from './servies/validate.service';
 import {AuthService} from './servies/auth.service';
-
 import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './component/about/about.component';
 import { agriDashboardComponent } from './component/agri/dashboard/dashboard.component';
@@ -30,6 +28,24 @@ import { RegisterComponent } from './component/register/register.component';
 import { LogprofileComponent } from './component/log/logprofile/logprofile.component';
 import { RetprofileComponent } from './component/ret/retprofile/retprofile.component';
 import { UserprofileComponent } from './component/user/userprofile/userprofile.component';
+import { AgrichatComponent } from './component/agri/agrichat/agrichat.component';
+import { AgripostComponent } from './component/agri/agripost/agripost.component';
+import { AgrireviewComponent } from './component/agri/agrireview/agrireview.component';
+import { AgrimainComponent } from './component/agri/agrimain/agrimain.component';
+import { UserchatComponent } from './component/user/userchat/userchat.component';
+import { UserreviewComponent } from './component/user/userreview/userreview.component';
+import { UserproductComponent } from './component/user/userproduct/userproduct.component';
+import { UserpaymentComponent } from './component/user/userpayment/userpayment.component';
+import { UserpostsComponent } from './component/user/userposts/userposts.component';
+import { UsercropdiaryComponent } from './component/user/usercropdiary/usercropdiary.component';
+import { UsermainComponent } from './component/user/usermain/usermain.component';
+import { RetmainComponent } from './component/ret/retmain/retmain.component';
+import { RetproductComponent } from './component/ret/retproduct/retproduct.component';
+import { RetpaymentComponent } from './component/ret/retpayment/retpayment.component';
+import { RethistoryComponent } from './component/ret/rethistory/rethistory.component';
+import { RettrackComponent } from './component/ret/rettrack/rettrack.component';
+import { RetreviewComponent } from './component/ret/retreview/retreview.component';
+
 
 
 const appRoutes: Routes =  [
@@ -37,35 +53,101 @@ const appRoutes: Routes =  [
 {path:'login', component: LoginComponent },
 {path:'register', component:  RegisterComponent},
 
-   {path:'user',
-   children:[{
+   {
+     path:'user',
+   
+   children:[
+   {
      path:'register',
      component:userRegisterComponent
    },
-   {path:'login',
+   {
+     path:'login',
     component: userLoginComponent
-  },{path:'dashboard',
+  },
+  {
+    path:'dashboard',
     component: userDashboardComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+
+   
+    children:[
+    {
+path:'',
+    component: UsermainComponent
+    },{
+      path:'profile',
+    component: UserprofileComponent
+    },{
+      path:'chat',
+    component:UserchatComponent 
+    },{
+      path:'product',
+    component: UserproductComponent
+    },{
+      path:'payment',
+    component: UserpaymentComponent
+    },{
+      path:'posts',
+    component: UserpostsComponent
+    },{
+      path:'review',
+    component: UsermainComponent
+    },{
+      path:'cropdiary',
+    component: UsercropdiaryComponent
+    }
+
+    ]
   }
 
 
-   ]},
-    {path:'agri',
+   ]
+ },
+    {
+      path:'agri',
+ 
    children:[{
      path:'register',
      component:agriRegisterComponent
    },
    {path:'login',
     component: agriLoginComponent
-  },{path:'dashboard',
+  },{
+
+    path:'dashboard',
     component: agriDashboardComponent,
-    canActivate:[AuthGuard]
-  },
-  {path:'profile',
-    component: AgriprofileComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+children:[
+{
+
+path:'',
+   component: AgrimainComponent
+},
+{
+
+path:'profile',
+   component: AgriprofileComponent
+},
+{
+path:'chat',
+   component: AgrichatComponent
+},
+{
+path:'post',
+component: AgripostComponent
+},
+{
+path:'review',
+   component: AgrireviewComponent
+}
+
+
+
+]
+
   }
+  
 
 
    ]},
@@ -83,16 +165,55 @@ const appRoutes: Routes =  [
 
 
    ]},
-   {path:'ret',
+   {
+     path:'ret',
+
    children:[{
      path:'register',
      component:retRegisterComponent
    },
-   {path:'login',
+   {
+     path:'login',
     component: retLoginComponent
-  }, {path:'dashboard',
+  }, {
+    path:'dashboard',
     component: retDashboardComponent,
     canActivate:[AuthGuard]
+
+
+ children:[
+ {
+path:'',
+    component: RetmainComponent
+ },
+ {
+ path:'profile',
+    component: RetprofileComponent
+ },
+ {
+   path:'product',
+    component:RetproductComponent
+
+ },{
+   path:'payment',
+    component: RetpaymentComponent
+  },{
+    path:'history',
+    component: RethistoryComponent
+  },
+  {path:'track',
+    component: RettrackComponent
+  }, {path:'review',
+    component: RetreviewComponent
+  }
+
+
+
+
+ ]
+
+
+
   }
 
 
@@ -130,7 +251,25 @@ const appRoutes: Routes =  [
     RegisterComponent,
     LogprofileComponent,
     RetprofileComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    AgrichatComponent,
+    AgripostComponent,
+    AgrireviewComponent,
+    AgrimainComponent,
+    UserchatComponent,
+    UserreviewComponent,
+    UserproductComponent,
+    UserpaymentComponent,
+    UserpostsComponent,
+    UsercropdiaryComponent,
+    UsermainComponent,
+    RetmainComponent,
+    RetproductComponent,
+    RetpaymentComponent,
+    RethistoryComponent,
+    RettrackComponent,
+    RetreviewComponent
+   
   ],
   imports: [
     BrowserModule,

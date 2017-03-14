@@ -69,6 +69,38 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  getProfileagri(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/agri/profile',{headers: headers})
+      .map(res => res.json());
+  }
+
+  getProfileret(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/ret/profile',{headers: headers})
+      .map(res => res.json());
+  }
+
+  getProfilelog(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/log/profile',{headers: headers})
+      .map(res => res.json());
+  }
+
+
+
+
+
+
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));

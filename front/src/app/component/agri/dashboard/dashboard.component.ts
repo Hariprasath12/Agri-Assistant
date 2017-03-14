@@ -12,20 +12,21 @@ user:Object;
   constructor(private authService:AuthService,
   	private router:Router) { }
 
-  ngOnInit() {  
- this.authService.getProfile().subscribe(profile=>{
+  ngOnInit() {
+  this.authService.getProfileagri().subscribe(profile=>{
 
 
 this.user=profile.user;
 
 
 
-// console.log(str.user);
+
   },
   err=>{
   	console.log("error");
   	return false;
-  });
+  });  
+ 
 }
 
 }

@@ -20,8 +20,6 @@ user:Object;
 this.user=profile.user;
 
 
-
-// console.log(str.user);
   },
   err=>{
   	console.log("error");

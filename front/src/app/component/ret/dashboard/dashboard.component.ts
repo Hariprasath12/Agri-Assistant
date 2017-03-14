@@ -12,15 +12,9 @@ export class retDashboardComponent implements OnInit {
 user:Object;
   constructor(private authService:AuthService,
   	private router:Router) { }
-
   ngOnInit() {  
- this.authService.getProfile().subscribe(profile=>{
-
-
+ this.authService.getProfileret().subscribe(profile=>{
 this.user=profile.user;
-
-
-
 // console.log(str.user);
   },
   err=>{
