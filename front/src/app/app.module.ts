@@ -45,6 +45,10 @@ import { RetpaymentComponent } from './component/ret/retpayment/retpayment.compo
 import { RethistoryComponent } from './component/ret/rethistory/rethistory.component';
 import { RettrackComponent } from './component/ret/rettrack/rettrack.component';
 import { RetreviewComponent } from './component/ret/retreview/retreview.component';
+import { LogpaymentComponent } from './component/log/logpayment/logpayment.component';
+import { LogupdateComponent } from './component/log/logupdate/logupdate.component';
+import { LogtrackComponent } from './component/log/logtrack/logtrack.component';
+import { LogmainComponent } from './component/log/logmain/logmain.component';
 
 
 
@@ -141,30 +145,53 @@ component: AgripostComponent
 path:'review',
    component: AgrireviewComponent
 }
-
-
-
 ]
+}
+]
+},
+ {
+ path:'log',
 
-  }
-  
-
-
-   ]},
-     {path:'log',
-   children:[{
+   children:
+   [
+   {
      path:'register',
      component:logRegisterComponent
    },
-   {path:'login',
+
+   {
+     path:'login',
     component: logLoginComponent
-  },{path:'dashboard',
+  },
+  {
+    path:'dashboard',
     component: logDashboardComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+children:
+   [
+   
+   {
+path:'',
+    component: LogmainComponent
+   },   {
+path:'profile',
+    component: LogprofileComponent
+   },
+      {
+path:'payment',
+    component: LogpaymentComponent
+   },   {
+path:'update',
+    component: LogupdateComponent
+   },   {
+path:'track',
+    component: LogtrackComponent
+   }
+   ]
+
   }
-
-
-   ]},
+]
+},
    {
      path:'ret',
 
@@ -178,7 +205,7 @@ path:'review',
   }, {
     path:'dashboard',
     component: retDashboardComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
 
 
  children:[
@@ -206,18 +233,10 @@ path:'',
   }, {path:'review',
     component: RetreviewComponent
   }
-
-
-
-
- ]
-
-
-
-  }
-
-
-   ]},
+]
+}
+]}
+,
 {path:'about', component: AboutComponent},
 
  
@@ -268,7 +287,11 @@ path:'',
     RetpaymentComponent,
     RethistoryComponent,
     RettrackComponent,
-    RetreviewComponent
+    RetreviewComponent,
+    LogpaymentComponent,
+    LogupdateComponent,
+    LogtrackComponent,
+    LogmainComponent
    
   ],
   imports: [

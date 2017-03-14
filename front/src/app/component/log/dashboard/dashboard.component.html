@@ -1,1 +1,17 @@
 
+<div class="container-fluid" id="subnav"> 
+<ul> 
+ <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/log/dashboard']">Dashboard</a></li>
+<li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/log/dashboard/profile']">Profile</a></li>	
+ <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/log/dashboard/update']">Update</a></li>
+<li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/log/dashboard/payment']">Payment</a></li>
+ <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/log/dashboard/track']">Track</a></li>
+<span  *ngIf="user">
+<li>{{user.name}}</li>
+</span>
+</ul>
+ <router-outlet></router-outlet>
+
+
+
+</div>
