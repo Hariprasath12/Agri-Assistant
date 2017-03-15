@@ -37,5 +37,13 @@ li a:hover:not(.active) {
 }
 span{
     color: white;
-    /*float: right;*/
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    float: right;
+   margin-right: 20px;
 }

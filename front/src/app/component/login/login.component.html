@@ -1,9 +1,52 @@
-<ul> 
-<li><a [routerLink]="['/agri/login']"> agri Login</a></li>
-<li><a [routerLink]="['/user/login']"> User Login</a></li>
+<div class="row">
+    <div class="col-sm-3" >
+    <div class="page-header"> Agri </div>
+    <div id="login"> 
+<a [routerLink]="['/agri/login']"> agri Login</a>
 
-<li><a [routerLink]="['/log/login']"> Log Login</a></li>
+    </div>
+     <div id="login"> 
+<a [routerLink]="['/agri/register']"> agri Register</a>
 
-<li><a [routerLink]="['/ret/login']"> RET Login</a></li>
+    </div>
+    
+   
+    </div>
+    <div class="col-sm-3" >
+    <div class="page-header">   Farmers</div>
+   <div id="login"> 
+<a [routerLink]="['/user/login']"> User Login</a>
 
-</ul>
+    </div>
+    <div id="login"> 
+<a [routerLink]="['/user/register']"> User Register</a>
+
+    </div>
+    
+    </div>
+    <div class="col-sm-3" >
+    <div class="page-header">LOG </div>
+      <div id="login"> 
+<a [routerLink]="['/log/login']"> Log Login</a>
+
+    </div>
+  
+    <div id="login"> 
+ <a [routerLink]="['/log/register']"> Log Register</a>
+
+    </div>
+    </div>
+    <div class="col-sm-3" >
+    <div class="page-header">Consumer </div>
+      <div id="login"> 
+<a [routerLink]="['/ret/login']"> RET Login</a>
+
+    </div>
+     <div id="login"> 
+<a [routerLink]="['/ret/register']"> RET Register</a>
+
+    </div>
+   
+    </div>
+    
+  </div>

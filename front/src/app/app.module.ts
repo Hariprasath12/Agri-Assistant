@@ -24,7 +24,7 @@ import { userLoginComponent } from './component/user/login/login.component';
 import { userRegisterComponent } from './component/user/register/register.component';
 import { AgriprofileComponent } from './component/agri/agriprofile/agriprofile.component';
 import { LoginComponent } from './component/login/login.component';
-import { RegisterComponent } from './component/register/register.component';
+
 import { LogprofileComponent } from './component/log/logprofile/logprofile.component';
 import { RetprofileComponent } from './component/ret/retprofile/retprofile.component';
 import { UserprofileComponent } from './component/user/userprofile/userprofile.component';
@@ -55,7 +55,7 @@ import { LogmainComponent } from './component/log/logmain/logmain.component';
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
 {path:'login', component: LoginComponent },
-{path:'register', component:  RegisterComponent},
+
 
    {
      path:'user',
@@ -267,7 +267,7 @@ path:'',
     agriRegisterComponent,
     AgriprofileComponent,
     LoginComponent,
-    RegisterComponent,
+    
     LogprofileComponent,
     RetprofileComponent,
     UserprofileComponent,
