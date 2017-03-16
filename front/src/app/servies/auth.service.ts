@@ -87,6 +87,26 @@ export class AuthService {
       .map(res => res.json());
   }
 
+ post(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/agri/post',{headers: headers})
+      .map(res => res.json());
+  }
+
+addpost(post){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/agri/post',post,{headers: headers})
+      .map(res => res.json());
+  }
+
+
+
   getProfilelog(){
     let headers = new Headers();
     this.loadToken();

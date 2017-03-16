@@ -29,7 +29,7 @@ router.post('/authenticate', (req, res, next) => {
   const username = req.body.phone;
   const password = req.body.password;
 
-  User.getUserByUsername(username, (err, user) => {
+  User.getUserByUsername(username,(err, user) => {
     if(err) throw err;
     if(!user){
       return res.json({success: false, msg: 'User not found'});
@@ -61,4 +61,37 @@ router.post('/authenticate', (req, res, next) => {
 router.get('/profile', passport.authenticate('agri', {session:false}), (req, res, next) => {
   res.json({user: req.user});
 });
+router.get('/post',passport.authenticate('agri', {session:false}), (req, res, next) => {
+let pro,id;
+pro=req.user;
+id=pro.id;
+User.getPost(id,(err,post)=>{
+res.json(post);
+});
+
+});
+
+router.post('/post',passport.authenticate('agri', {session:false}), (req, res, next) => {
+let pro,id;
+pro=req.user;
+id=pro.id;
+const post={
+  content:req.body.content,
+  tag:req.body.tag,
+  title:req.body.title,
+  id:id
+
+};
+console.log(post);
+
+User.addPost(post,(err,post)=>{
+   if(err) throw err;
+if(post.ok==1){
+  res.json({success: true, msg:'updated'});
+}
+
+});
+
+});
+
 module.exports = router;

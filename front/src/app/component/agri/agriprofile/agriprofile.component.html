@@ -1,4 +1,14 @@
-<div *ngIf="user">
-<h2 class="page-header">{{user.name}} </h2>
-<p> {{user.phone}}</p>
- </div>
+
+<div *ngIf="user" id="profile"> 
+<h2 class="page-header">Profile</h2>
+
+
+
+
+{{user.name}}
+{{user.phone}}
+{{user.clg}}
+{{user.address}}
+{{user.qualification}}
+{{user.email}}
+</div>

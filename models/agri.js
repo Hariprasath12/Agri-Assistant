@@ -38,13 +38,17 @@ const UserSchema = mongoose.Schema({
   },
   post:[{
        id:String,
+       title:String,
        date: { type: Date, default: Date.now},
-        review:[{
+       content:String,
+       tag:[],
+       
+  }],
+   review:[{
           id:String,
           stars:Number,
           cmt:String
         }]
-  }]
 });
 
 
@@ -53,6 +57,20 @@ const User = module.exports = mongoose.model('agri', UserSchema);
 module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }
+module.exports.getPost = function(id, callback) {
+    const post={
+      id: id
+    }
+    User.find({_id:id},'post',callback);
+   
+}
+module.exports.addPost = function(post, callback) {
+        
+
+ User.update({_id:post.id},{$push:{"post":post}},callback);
+   
+}
+
 
 module.exports.getUserByUsername = function(username, callback) {
     const query = {

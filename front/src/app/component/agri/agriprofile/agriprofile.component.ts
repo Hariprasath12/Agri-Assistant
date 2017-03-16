@@ -9,23 +9,23 @@ import{Router} from '@angular/router';
 })
 export class AgriprofileComponent implements OnInit {
 user:Object;
+
   constructor(private authService:AuthService,
   	private router:Router) { }
 
   ngOnInit() {
   	this.authService.getProfileagri().subscribe(profile=>{
-
-
-this.user=profile.user;
-
-
-
-
-  },
+       this.user=profile.user;
+       console.log(this.user);
+},
   err=>{
   	console.log("error");
   	return false;
   });
   }
+
+
+
+  
 
 }

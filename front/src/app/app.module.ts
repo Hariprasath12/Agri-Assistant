@@ -49,7 +49,11 @@ import { LogpaymentComponent } from './component/log/logpayment/logpayment.compo
 import { LogupdateComponent } from './component/log/logupdate/logupdate.component';
 import { LogtrackComponent } from './component/log/logtrack/logtrack.component';
 import { LogmainComponent } from './component/log/logmain/logmain.component';
-
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import {AgriService} from './servies/agri.service';
+import {LogService} from './servies/log.service';
+import {RetService } from './servies/ret.service';
+import {UserService} from './servies/user.service';
 
 
 const appRoutes: Routes =  [
@@ -302,7 +306,7 @@ path:'',
     RouterModule.forRoot(appRoutes),
      FlashMessagesModule
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService,AuthGuard,AgriService,LogService,RetService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
