@@ -4,3 +4,9 @@
 #post input,textarea{
 	width: 400px;
 }
+#posts{
+	 list-style-type: none;
+}
+a{
+	padding-left: 7px;
+}

@@ -18,8 +18,8 @@ post:any;
 
   ngOnInit() {
   	this.authService.post().subscribe(post=>{
-       this.post=post;
-     console.log(post);
+       this.post=post[0].post;
+     // console.log(this.post);
       
 },
   err=>{
@@ -39,17 +39,20 @@ const addpost={
 
 this.authService.addpost(addpost).subscribe(post=>{
       
-     console.log(post);
+   this.post.push(addpost);  
       
 },
   err=>{
     console.log("error");
     return false;
   });
+}
+  deletepost(id){
 
-
-
-
+console.log(id);
+  }
+  editpost(id){
+    console.log(id);
   }
 
 

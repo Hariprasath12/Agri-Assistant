@@ -14,13 +14,7 @@ user:Object;
 
   ngOnInit() {
   this.authService.getProfileagri().subscribe(profile=>{
-
-
-this.user=profile.user;
-
-
-
-
+    this.user=profile.user;
   },
   err=>{
   	console.log("error");
