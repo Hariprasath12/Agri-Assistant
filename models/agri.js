@@ -58,12 +58,13 @@ module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }
 module.exports.getPost = function(id, callback) {
-    const post={
-      id: id
-    }
+  
     User.find({_id:id},'post',callback);
    
 }
+
+
+
 module.exports.addPost = function(post, callback) {
         
 
@@ -79,6 +80,18 @@ module.exports.getUserByUsername = function(username, callback) {
     User.findOne(query, callback);
 }
 
+module.exports.getAllPosts = function( callback) {
+   
+    User.find({},'post' ,callback);
+}
+
+
+
+
+
+
+
+
 
 module.exports.deletePost = function(del, callback) {
     
@@ -90,6 +103,11 @@ const options={ multi: false}
 
     User.update(con,update,options,callback);
 }
+
+
+
+
+
 
 module.exports.addUser = function(newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {

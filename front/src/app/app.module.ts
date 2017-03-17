@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
 import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
@@ -50,6 +51,7 @@ import { LogupdateComponent } from './component/log/logupdate/logupdate.componen
 import { LogtrackComponent } from './component/log/logtrack/logtrack.component';
 import { LogmainComponent } from './component/log/logmain/logmain.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { AddpostComponent } from './component/agri/agripost/addpost/addpost.component';
 
 
 
@@ -292,7 +294,8 @@ path:'',
     LogpaymentComponent,
     LogupdateComponent,
     LogtrackComponent,
-    LogmainComponent
+    LogmainComponent,
+    AddpostComponent
    
   ],
   imports: [
@@ -301,7 +304,8 @@ path:'',
     HttpModule,
    
     RouterModule.forRoot(appRoutes),
-     FlashMessagesModule
+     FlashMessagesModule,
+    Ng2Bs3ModalModule 
   ],
   providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]

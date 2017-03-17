@@ -125,7 +125,15 @@ addpost(post){
       .map(res => res.json());
   }
 
+getAllPosts(){
+   let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/posts',{headers: headers})
+      .map(res => res.json());
 
+}
 
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
  import {AuthService} from '../../../servies/auth.service';
 import{Router} from '@angular/router';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 // import{post} from '../../../models/post';
 
@@ -30,17 +31,13 @@ post:any;
 
 }
 
-onpostSubmit(){
+onUserCreated(event){
 
-const addpost={
-  title:this.title,
-  content:this.content,
-  tag:this.tag.split(",")
- }
 
-this.authService.addpost(addpost).subscribe(post=>{
+
+this.authService.addpost(event.post).subscribe(post=>{
       
-   this.post.push(addpost);  
+    this.post.push(event.post);
       
 },
   err=>{
@@ -48,6 +45,12 @@ this.authService.addpost(addpost).subscribe(post=>{
     return false;
   });
 }
+
+
+
+
+
+
   deletepost(a,id){
   // console.log(a);
   // console.log(id);
@@ -69,7 +72,10 @@ this.authService.deletepost(id).subscribe(post=>{
 
   }
   editpost(id){
-    console.log(id);
+  
+console.log(id);
+
+
   }
 
 
