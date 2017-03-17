@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import {Http, Headers,URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {tokenNotExpired} from 'angular2-jwt';
 
@@ -102,6 +102,15 @@ addpost(post){
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type','application/json');
     return this.http.post('http://localhost:3000/agri/post',post,{headers: headers})
+      .map(res => res.json());
+  }
+  deletepost(id){
+    
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.delete('http://localhost:3000/agri/post/'+id,{headers: headers})
       .map(res => res.json());
   }
 

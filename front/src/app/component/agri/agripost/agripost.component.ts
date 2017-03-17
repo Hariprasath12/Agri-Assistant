@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
  import {AuthService} from '../../../servies/auth.service';
 import{Router} from '@angular/router';
+
 // import{post} from '../../../models/post';
 
 @Component({
@@ -47,9 +48,25 @@ this.authService.addpost(addpost).subscribe(post=>{
     return false;
   });
 }
-  deletepost(id){
+  deletepost(a,id){
+  // console.log(a);
+  // console.log(id);
 
-console.log(id);
+
+
+this.authService.deletepost(id).subscribe(post=>{
+      
+  this.post.splice(a,1);
+
+      // console.log(post);
+},
+  err=>{
+    console.log("error");
+    return false;
+  });
+
+
+
   }
   editpost(id){
     console.log(id);

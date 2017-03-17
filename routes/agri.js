@@ -94,4 +94,23 @@ if(post.ok==1){
 
 });
 
+
+router.delete('/post/:id',passport.authenticate('agri', {session:false}) ,(req, res, next)=>{
+  let id= req.params.id;
+  let pro,userid;
+pro=req.user;
+userid=pro.id;
+const del={
+  userid:userid,
+  id:id
+}
+
+console.log(del);
+
+User.deletePost(del,(err,post)=>{
+  if(err) throw err;
+ res.json(post);
+})
+});
+
 module.exports = router;

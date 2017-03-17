@@ -33,10 +33,11 @@
 <h4> List of posts</h4>
  <ul id="posts">
       <li *ngFor="let posts of post;let i = index">
-        {{i+1}} {{ posts.content}}
+      
+        {{i+1}} {{ posts.title}}
 
-        <i (click)="editpost(posts._id)" class="fa fa-pencil" aria-hidden="true"></i>
-<i (click)="deletepost(posts._id)" class="fa fa-trash-o" aria-hidden="true"></i>
+        <i (click)="editpost(i,posts._id)" class="fa fa-pencil" aria-hidden="true"></i>
+<i (click)="deletepost(i,posts._id)" class="fa fa-trash-o" aria-hidden="true"></i>
 
 
       </li>

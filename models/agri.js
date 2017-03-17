@@ -79,6 +79,18 @@ module.exports.getUserByUsername = function(username, callback) {
     User.findOne(query, callback);
 }
 
+
+module.exports.deletePost = function(del, callback) {
+    
+  
+
+const con={_id:del.userid};
+const update={$pull:{"post":{"_id":del.id}}};
+const options={ multi: false}
+
+    User.update(con,update,options,callback);
+}
+
 module.exports.addUser = function(newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -88,6 +100,11 @@ module.exports.addUser = function(newUser, callback) {
         });
     });
 }
+
+
+
+
+
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
