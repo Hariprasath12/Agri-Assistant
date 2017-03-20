@@ -54,9 +54,16 @@ const UserSchema = mongoose.Schema({
 
 const User = module.exports = mongoose.model('agri', UserSchema);
 
+
+
 module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }
+
+
+
+
+
 module.exports.getPost = function(id, callback) {
   
     User.find({_id:id},'post',callback);
@@ -64,13 +71,11 @@ module.exports.getPost = function(id, callback) {
 }
 
 
-
 module.exports.addPost = function(post, callback) {
-        
-
- User.update({_id:post.id},{$push:{"post":post}},callback);
+User.update({_id:post.id},{$push:{"post":post}},callback);
    
 }
+
 
 
 module.exports.getUserByUsername = function(username, callback) {
@@ -80,23 +85,14 @@ module.exports.getUserByUsername = function(username, callback) {
     User.findOne(query, callback);
 }
 
+
 module.exports.getAllPosts = function( callback) {
    
     User.find({},'post' ,callback);
 }
 
 
-
-
-
-
-
-
-
 module.exports.deletePost = function(del, callback) {
-    
-  
-
 const con={_id:del.userid};
 const update={$pull:{"post":{"_id":del.id}}};
 const options={ multi: false}

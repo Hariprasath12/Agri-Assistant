@@ -9,6 +9,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './component/home/home.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from './servies/auth.service';
+
 import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './component/about/about.component';
 import { agriDashboardComponent } from './component/agri/dashboard/dashboard.component';
@@ -25,7 +26,7 @@ import { userLoginComponent } from './component/user/login/login.component';
 import { userRegisterComponent } from './component/user/register/register.component';
 import { AgriprofileComponent } from './component/agri/agriprofile/agriprofile.component';
 import { LoginComponent } from './component/login/login.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
 import { LogprofileComponent } from './component/log/logprofile/logprofile.component';
 import { RetprofileComponent } from './component/ret/retprofile/retprofile.component';
 import { UserprofileComponent } from './component/user/userprofile/userprofile.component';
@@ -296,16 +297,19 @@ path:'',
     LogtrackComponent,
     LogmainComponent,
     AddpostComponent
+
    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    FileUploadModule,
    
     RouterModule.forRoot(appRoutes),
      FlashMessagesModule,
     Ng2Bs3ModalModule 
+
   ],
   providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]
