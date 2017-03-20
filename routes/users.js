@@ -115,23 +115,62 @@ router.post('/updatepayment', passport.authenticate('users', {
     let pro, id;
     pro = req.user;
     id = pro.id;
-     let rs=req.body.rs;
-     let des=req.body.des;
-     if(rs>0){
+    let from = req.body.from;
+    let to = req.body.to;
+    let rs = req.body.rs;
 
-     }else{
+    const pay = {
+        from: from,
+        to: to,
+        amount: rs
+    };
 
-     }
+    User.payment(id, (err, payment) => {
 
-    
-    User.updatePayment(id,det,(err, payment) => {
+        if (payment.payment > rs) {
+            User.incPayment(id, rs, (err, pay) => {
+
+                User.updatePayment(id, pay, (err, pay) => {
+
+                    res.send(pay);
+                });
+            });
+
+        } else {
+            res.json("amount is low");
+
+        }
+    });
+
+
+});
+
+
+
+
+router.get('/cropdiary', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.cropdDiary(id, (err, payment) => {
 
         res.send(payment);
     });
 });
 
+router.get('/paymenthistory', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.paymentHis(id, (err, payment) => {
 
-
+        res.send(payment);
+    });
+});
 
 
 
@@ -146,6 +185,19 @@ router.get('/getCrops', passport.authenticate('users', {
         res.send(crops);
     });
 });
+
+router.get('/producthistory', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.productHistory(id, (err, crops) => {
+
+        res.send(crops.product);
+    });
+});
+
 
 
 router.post('/updatecrops', passport.authenticate('users', {
@@ -165,6 +217,10 @@ router.post('/updatecrops', passport.authenticate('users', {
     });
 
 });
+
+
+
+
 router.delete('/deletecrops/:id', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {

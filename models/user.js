@@ -7,7 +7,6 @@ const UserSchema = mongoose.Schema({
     },
     phone: {
         type: Number,
-
         unique: true
     },
 
@@ -111,9 +110,9 @@ module.exports.getCrops = function(id, callback) {
 module.exports.updateCrops = function(crops, id, callback) {
 
 
-console.log(crops);
+    console.log(crops);
 
-   User.update({
+    User.update({
         _id: id
     }, {
         $push: {
@@ -127,12 +126,22 @@ console.log(crops);
 
 
 
-module.exports.deleteCrops = function(del,id, callback) {
-const con={_id:id};
-const update={$pull:{"crops":{"_id":del}}};
-const options={ multi: false}
+module.exports.deleteCrops = function(del, id, callback) {
+    const con = {
+        _id: id
+    };
+    const update = {
+        $pull: {
+            "crops": {
+                "_id": del
+            }
+        }
+    };
+    const options = {
+        multi: false
+    }
 
-    User.update(con,update,options,callback);
+    User.update(con, update, options, callback);
 }
 
 
@@ -143,24 +152,64 @@ module.exports.payment = function(id, callback) {
     User.findById(id, 'payment', callback);
 }
 
-module.exports.updatePayment = function(id,det, callback) {
-const con={_id:id};
-const update={ $inc: { payment:det.rs} };
-const options={ multi: false};
-// let q2;
-// const s1={"amt":det.rs,"to":det.to,"from":"self"};
-// const s2={"amt":det.rs,"to":"self","from":det.to};
-// if(det.rs>0){
+module.exports.cropdDiary = function(id, callback) {
 
-//  q2={$push:{" pay_his":s1}};
-// }
-// else{
-// q2={$push:{"pay_his":s2}};
+    User.findById(id, 'cropdiary', callback);
+}
+module.exports.productHistory = function(id, callback) {
 
-// }
-// console.log(q2);
-User.update(con,update,options,callback);
-  // User.update(con,q2,options,callback);  
+    User.findById(id, 'product', callback);
+}
+
+
+
+
+module.exports.paymentHis = function(id, callback) {
+
+    User.find({
+        _id: id
+    }, 'pay_his', callback);
+}
+module.exports.incPayment = function(id, rs, callback) {
+
+    const con = {
+        _id: id
+    };
+    const update = {
+        $inc: {
+            payment: rs
+        }
+    };
+    const options = {
+        multi: false
+    };
+    User.update(con, update, options, callback);
+}
+
+
+
+module.exports.updatePayment = function(id, det, callback) {
+    const con = {
+        _id: id
+    };
+    const update = {
+        $inc: {
+            payment: det.rs
+        }
+    };
+    const options = {
+        multi: false
+    };
+
+    const sub = {
+        $push: {
+            "pay_his": {
+                det
+            }
+        }
+    };
+
+    User.update(con, sub, options, callback);
 
 }
 
