@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/agri');
+const far = require('../models/user');
 router.post('/register', (req, res, next) => {
   let newUser = new User({
     name: req.body.name,
@@ -61,6 +62,16 @@ router.post('/authenticate', (req, res, next) => {
 router.get('/profile', passport.authenticate('agri', {session:false}), (req, res, next) => {
   res.json({user: req.user});
 });
+
+
+router.post('/cropdiary', passport.authenticate('agri', {session:false}), (req, res, next) => {
+  res.json({user: req.user});
+});
+
+
+
+
+
 router.get('/post',passport.authenticate('agri', {session:false}), (req, res, next) => {
 let pro,id;
 pro=req.user;
@@ -105,7 +116,7 @@ const del={
   id:id
 }
 
-console.log(del);
+// console.log(del);
 
 User.deletePost(del,(err,post)=>{
   if(err) throw err;
