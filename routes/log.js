@@ -58,4 +58,80 @@ router.post('/authenticate', (req, res, next) => {
 router.get('/profile', passport.authenticate('log', {session:false}), (req, res, next) => {
   res.json({user: req.user});
 });
+router.post('/inittrack', passport.authenticate('log', {session:false}), (req, res, next) => {
+   let pro, id;
+    pro = req.user;
+    id = pro.id;
+
+  var track={
+    price:req.body.price,
+    user:req.body.user,
+    to:req.body.to,
+    from:req.body.from,
+    expecteddate:req.body.date,
+}
+
+User.inittrack(track,id,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+
+router.get('/trackbyid/:id', passport.authenticate('log', {session:false}), (req, res, next) => {
+  
+let id= req.params.id;
+ console.log(id);
+User.trackbyid(id,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+router.get('/location', passport.authenticate('log', {session:false}), (req, res, next) => {
+  
+  let pro, id;
+    pro = req.user;
+    id = pro.id;
+
+User.location(id,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+router.post('/location', passport.authenticate('log', {session:false}), (req, res, next) => {
+  
+  let pro, id;
+    pro = req.user;
+    id = pro.id;
+var loc={
+  loc:req.body.loc,
+  address:req.body.address,
+  phone:req.body.phone,
+  email:req.body.email
+}
+console.log(loc);
+User.addlocation(loc,id,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+router.post('/updatetrack', passport.authenticate('log', {session:false}), (req, res, next) => {
+  
+  let pro, id;
+    pro = req.user;
+    id = pro.id;
+
+var info={
+  location:req.body.loc,
+  id:req.body.id
+}
+
+User.updatetrack(info,id,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+
+
+
+
 module.exports = router;

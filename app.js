@@ -26,6 +26,7 @@ const users = require('./routes/users');
 const agri = require('./routes/agri');
 const log = require('./routes/log');
 const ret = require('./routes/ret');
+const chat = require('./routes/chat');
 // Port Number
 const port = 3000;
 
@@ -43,18 +44,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passport')(passport);
-
+app.use('/chat', chat);
 app.use('/users', users);
 app.use('/agri', agri);
 app.use('/log', log);
 app.use('/ret', ret);
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Access-Control-Allow-Methods', 'POST');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
+
+
 // Index Route
 app.get('/', (req, res) => {
   res.send('Welcome !!!');
