@@ -71,8 +71,8 @@ module.exports.getPost = function(id, callback) {
 }
 
 
-module.exports.addPost = function(post, callback) {
-User.update({_id:post.id},{$push:{"post":post}},callback);
+module.exports.addPost = function(post,id, callback) {
+User.update({_id:id},{$push:{"post":post}},callback);
    
 }
 
@@ -105,6 +105,7 @@ const options={ multi: false}
 
 
 
+
 module.exports.addUser = function(newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -114,6 +115,9 @@ module.exports.addUser = function(newUser, callback) {
         });
     });
 }
+
+
+
 
 
 

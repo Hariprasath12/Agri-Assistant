@@ -109,12 +109,15 @@ router.get('/payment', passport.authenticate('users', {
         res.send(payment);
     });
 });
+
+
 router.post('/updatepayment', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
     let pro, id;
     pro = req.user;
     id = pro.id;
+
     let from = req.body.from;
     let to = req.body.to;
     let rs = req.body.rs;
@@ -155,8 +158,7 @@ router.get('/cropdiary', passport.authenticate('users', {
     pro = req.user;
     id = pro.id;
     User.cropdDiary(id, (err, payment) => {
-
-        res.send(payment);
+     res.send(payment);
     });
 });
 

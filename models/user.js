@@ -44,9 +44,9 @@ const UserSchema = mongoose.Schema({
             type: Date,
             default: Date.now
         },
-
-        des: String,
-        By: String
+ By: String,
+        des: String
+       
     }],
     product: [{
         id: String,
@@ -123,11 +123,15 @@ module.exports.updateCrops = function(crops, id, callback) {
             "crops": crops
         }
     }, callback);
-
-
 }
 
+module.exports.updateCropdiary = function(id,crop, callback) {
+const con={_id:id};
+const update={$push:{"cropdiary":crop}};
+const options={ multi: false}
 
+    User.update(con,update,options,callback);
+}
 
 
 module.exports.deleteCrops = function(del, id, callback) {
@@ -218,9 +222,9 @@ module.exports.updatePayment = function(id, det, callback) {
 
     const sub = {
         $push: {
-            "pay_his": {
+            "pay_his": 
                 det
-            }
+            
         }
     };
 

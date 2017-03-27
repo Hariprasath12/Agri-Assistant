@@ -8,12 +8,12 @@ const UserSchema = mongoose.Schema({
         type: String
     },
     email: {
-        type: String, 
+        type: String,
         required: true
     },
     address: {
         type: String,
- required: true
+        required: true
     },
     phone: {
         type: Number,
@@ -22,7 +22,7 @@ const UserSchema = mongoose.Schema({
     },
     password: {
         type: String,
-         required: true
+        required: true
 
     },
     companyname: String,
@@ -32,10 +32,10 @@ const UserSchema = mongoose.Schema({
         id: String,
         from: String,
         price: String,
-        track:{
-        type: String,
-        default: null
-    },
+        track: {
+            type: String,
+            default: null
+        },
         date: {
             type: Boolean,
             default: false
@@ -43,22 +43,24 @@ const UserSchema = mongoose.Schema({
 
     }],
     payment: {
-            type: Number,
-            default: 2
-        },
-    payment_his: [{
-        to: String,
-        from: String,
+        type: Number,
+        default: 2
+    },
+    pay_his: [{
+        id: String,
+        amount: Number,
+        to: Number,
+        from: Number,
         date: {
-            type: Boolean,
-            default: false
+            type: Date,
+            default: Date.now
         }
+
     }],
     review: [{
         id: String,
         stars: Number,
         cmt: String
-
     }]
 });
 
@@ -86,8 +88,8 @@ module.exports.addUser = function(newUser, callback) {
 }
 
 module.exports.payment = function(id, callback) {
-    
-  User.findById(id, 'payment', callback);
+
+    User.findById(id, 'payment', callback);
 }
 
 module.exports.paymentHis = function(id, callback) {
@@ -100,8 +102,8 @@ module.exports.paymentHis = function(id, callback) {
 module.exports.product = function(callback) {
 
     User.find({
-       
-    },'product', callback);
+
+    }, 'product', callback);
 }
 
 
@@ -138,12 +140,11 @@ module.exports.updatePayment = function(id, det, callback) {
 
     const sub = {
         $push: {
-            "pay_his": {
-                det
-            }
+            "pay_his": det
+
         }
     };
-
+    console.log(det);
     User.update(con, sub, options, callback);
 
 }

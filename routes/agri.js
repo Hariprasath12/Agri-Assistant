@@ -65,7 +65,23 @@ router.get('/profile', passport.authenticate('agri', { session: false }), (req, 
 
 
 router.post('/cropdiary', passport.authenticate('agri', { session: false }), (req, res, next) => {
-    res.json({ user: req.user });
+let pro, id,fid;
+    pro = req.user;
+    id = pro.id;
+fid=req.body.id;
+var crop={
+des:req.body.des,
+ By:id
+};
+console.log(fid);
+console.log(crop);
+ far.updateCropdiary(fid,crop, (err, post) => {
+        res.json(post);
+    });
+
+
+
+
 });
 
 
@@ -90,12 +106,12 @@ router.post('/post', passport.authenticate('agri', { session: false }), (req, re
         content: req.body.content,
         tag: req.body.tag,
         title: req.body.title,
-        id: id
+        
 
     };
     console.log(post);
 
-    User.addPost(post, (err, post) => {
+    User.addPost(post,id, (err, post) => {
         if (err) throw err;
         if (post.ok == 1) {
             res.json({ success: true, msg: 'updated' });
@@ -116,7 +132,7 @@ router.delete('/post/:id', passport.authenticate('agri', { session: false }), (r
         id: id
     }
 
-    // console.log(del);
+   
 
     User.deletePost(del, (err, post) => {
         if (err) throw err;

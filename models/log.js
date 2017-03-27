@@ -36,6 +36,7 @@ const UserSchema = mongoose.Schema({
             default: Date.now
         },
         user: [{
+            ref:String,
             name: String,
             phone: Number,
             email: String,
