@@ -69,9 +69,11 @@ let pro, id,fid;
     pro = req.user;
     id = pro.id;
 fid=req.body.id;
+username=pro.name;
 var crop={
 des:req.body.des,
- By:id
+ By:id,
+ name:username
 };
 console.log(fid);
 console.log(crop);

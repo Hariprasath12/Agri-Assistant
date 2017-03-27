@@ -53,6 +53,8 @@ import { LogtrackComponent } from './component/log/logtrack/logtrack.component';
 import { LogmainComponent } from './component/log/logmain/logmain.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { AddpostComponent } from './component/agri/agripost/addpost/addpost.component';
+import { PaymenthisComponent } from './component/user/userpayment/paymenthis/paymenthis.component';
+import { PaymenttempComponent } from './component/user/userpayment/paymenttemp/paymenttemp.component';
 
 
 
@@ -296,7 +298,9 @@ path:'',
     LogupdateComponent,
     LogtrackComponent,
     LogmainComponent,
-    AddpostComponent
+    AddpostComponent,
+    PaymenthisComponent,
+    PaymenttempComponent
 
    
   ],

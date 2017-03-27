@@ -1,0 +1,16 @@
+<div> 
+<div *ngIf="history"> 
+<div *ngFor="let his of history"> 
+
+{{his.from}}
+{{his.to}}
+{{his.amount | currency:'INR':true}}
+{{his.date | date | uppercase}}
+
+
+</div>
+
+</div>
+
+
+</div>

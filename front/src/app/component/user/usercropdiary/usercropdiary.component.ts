@@ -11,14 +11,19 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./usercropdiary.component.css']
 })
 export class UsercropdiaryComponent implements OnInit {
-posts:any;
+cd:any;
   constructor(private authService:AuthService,
   	private router:Router) { }
 
   ngOnInit() {
 this.authService.cropdiary().subscribe(post=>{
-    console.log(post);
+    
      
+this.cd=post.cropdiary;
+// console.log(this.cd);
+
+
+
 },
   err=>{
   	console.log("error");

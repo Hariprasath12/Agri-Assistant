@@ -45,6 +45,7 @@ const UserSchema = mongoose.Schema({
             default: Date.now
         },
  By: String,
+ name:String,
         des: String
        
     }],
@@ -160,6 +161,8 @@ module.exports.payment = function(id, callback) {
     User.findById(id, 'payment', callback);
 }
 
+
+
 module.exports.cropdDiary = function(id, callback) {
 
     User.findById(id, 'cropdiary', callback);
@@ -208,6 +211,7 @@ module.exports.incPayment = function(id, rs, callback) {
 
 
 module.exports.updatePayment = function(id, det, callback) {
+    console.log(det);
     const con = {
         _id: id
     };

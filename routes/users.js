@@ -110,6 +110,18 @@ router.get('/payment', passport.authenticate('users', {
     });
 });
 
+router.post('/addpayment', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+let rs=req.body.rs;
+    User.incPayment(id,rs, (err, payment) => {
+
+        res.send(payment);
+    });
+});
 
 router.post('/updatepayment', passport.authenticate('users', {
     session: false
@@ -117,11 +129,15 @@ router.post('/updatepayment', passport.authenticate('users', {
     let pro, id;
     pro = req.user;
     id = pro.id;
-
+    let des=req.body.des;
+      
     let from = req.body.from;
     let to = req.body.to;
     let rs = req.body.rs;
 
+if(des=="out"){
+    rs=rs - (rs * 2);
+}
     const pay = {
         from: from,
         to: to,
@@ -131,7 +147,7 @@ router.post('/updatepayment', passport.authenticate('users', {
     User.payment(id, (err, payment) => {
 
         if (payment.payment > rs) {
-            User.incPayment(id, rs, (err, pay) => {
+            User.incPayment(id, rs, (err, paym) => {
 
                 User.updatePayment(id, pay, (err, pay) => {
 

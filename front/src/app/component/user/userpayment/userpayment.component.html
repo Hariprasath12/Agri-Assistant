@@ -1,3 +1,11 @@
-<p>
-  userpayment works!
-</p>
+<div> 
+<div *ngIf="payment">
+<div> 
+<h2>Balance:{{payment| currency:'INR':true}}</h2>
+</div>
+</div>
+<app-paymenthis>
+</app-paymenthis>
+<app-paymenttemp (add)=onadd($event)>
+</app-paymenttemp>
+</div>

@@ -126,6 +126,75 @@ addpost(post){
     return this.http.delete('http://localhost:3000/agri/post/'+id,{headers: headers})
       .map(res => res.json());
   }
+  userpayment(){
+
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/payment',{headers: headers})
+      .map(res => res.json());
+  }
+   retpayment(){
+
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/ret/payment',{headers: headers})
+      .map(res => res.json());
+  }
+
+logpayment(){
+
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/log/payment',{headers: headers})
+      .map(res => res.json());
+  }
+
+ userpaymenthis(){
+
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/paymenthistory',{headers: headers})
+      .map(res => res.json());
+  }
+   retpaymenthis(){
+
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/ret/paymenthistory',{headers: headers})
+      .map(res => res.json());
+  }
+
+logpaymenthis(){
+
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/log/paymenthistory',{headers: headers})
+      .map(res => res.json());
+  }
+
+useraddpayment(rs){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/addpayment',rs,{headers: headers})
+      .map(res => res.json());
+
+}
+
+
 
 
 
