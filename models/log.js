@@ -20,6 +20,10 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    payment:{
+            type: Number,
+            default:2
+        },
     track: [{
         id: String,
         price: Number,
@@ -106,6 +110,17 @@ module.exports.location = function(id, callback) {
     }, 'center', callback);
 
 }
+module.exports.payment = function(id, callback) {
+    // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
+
+    User.find({
+        _id: id
+    }, 'payment', callback);
+
+}
+
+
+
 module.exports.addlocation = function(info, id, callback) {
     // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
     console.log(info);
@@ -122,14 +137,10 @@ module.exports.addlocation = function(info, id, callback) {
 module.exports.updatetrack = function(info, id, callback) {
     // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
     console.log(info);
-    User.update({
-        "_id": id,
+    User.find({
+        
         "track._id":info.id
-    }, {
-        $push: {
-            "track.$.location": info.location
-        }
-    }, callback);
+    },'track.location', callback);
 
 }
 

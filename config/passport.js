@@ -3,6 +3,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const User = require('../models/user');
 const agri = require('../models/agri');
 const log = require('../models/log');
+const ret = require('../models/ret');
 const config = require('../config/database');
 
 module.exports = function(passport){
@@ -51,7 +52,7 @@ module.exports = function(passport){
   }));
 
 passport.use('ret',new JwtStrategy(opts, (jwt_payload, done) => {
-    User.getUserById(jwt_payload._doc._id, (err, user) => {
+    ret.getUserById(jwt_payload._doc._id, (err, user) => {
       if(err){
         return done(err, false);
       }

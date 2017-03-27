@@ -174,6 +174,17 @@ module.exports.paymentHis = function(id, callback) {
         _id: id
     }, 'pay_his', callback);
 }
+
+module.exports.product = function(callback) {
+
+    User.find({
+       
+    },'product', callback);
+}
+
+
+
+
 module.exports.incPayment = function(id, rs, callback) {
 
     const con = {

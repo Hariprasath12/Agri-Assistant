@@ -124,12 +124,23 @@ var info={
   location:req.body.loc,
   id:req.body.id
 }
-
+console.log(info);
 User.updatetrack(info,id,(err,post)=>{
    if(err) throw err;
 res.send(post);
 });
 });
+router.get('/payment', passport.authenticate('log', {session:false}), (req, res, next) => {
+  
+  let pro, id;
+    pro = req.user;
+    id = pro.id;
+User.payment(id,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+
 
 
 
