@@ -1,11 +1,39 @@
-<div> 
+<div class="container-fluid" id="payment"> 
+
+<div class="row">
+<div class="col-md-4"> 
 <div *ngIf="payment">
 <div> 
 <h2>Balance:{{payment| currency:'INR':true}}</h2>
 </div>
 </div>
-<app-paymenthis>
-</app-paymenthis>
+
+</div>
+<div class="col-md-6"> 
+
 <app-paymenttemp (add)=onadd($event)>
 </app-paymenttemp>
+
 </div>
+ </div>
+
+<app-paymenthis>
+</app-paymenthis>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

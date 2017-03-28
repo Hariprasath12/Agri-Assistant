@@ -1,15 +1,9 @@
-<div> 
+<div class="container-fluid"> 
+<div class="row">
+<div class="col-md-6">
+
 <div *ngIf="post"> 
 <div *ngFor="let posts of post" > 
-<!-- {{posts.name}}
-{{posts.phone}}
-{{posts.irr}}
-{{posts.farm}}
-{{posts.verify}}
-{{posts.address}} -->
-
-<app-usercrops>
-</app-usercrops>
 <form class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-2 control-label">Name</label>
@@ -39,8 +33,20 @@
 
   
 </form>
+
+</div>
+</div>
+ </div>
+<div class="col-md-6">
+<app-usercrops>
+</app-usercrops>
+
+ </div>
+
+  </div>
+</div>
 <app-usereditprofile>
 </app-usereditprofile>
-</div>
-</div>
-</div>
+
+<app-addcrop>
+</app-addcrop>

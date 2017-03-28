@@ -57,6 +57,7 @@ import { PaymenthisComponent } from './component/user/userpayment/paymenthis/pay
 import { PaymenttempComponent } from './component/user/userpayment/paymenttemp/paymenttemp.component';
 import { UsereditprofileComponent } from './component/user/userprofile/usereditprofile/usereditprofile.component';
 import { UsercropsComponent } from './component/user/userprofile/usercrops/usercrops.component';
+import { AddcropComponent } from './component/user/addcrop/addcrop.component';
 
 
 
@@ -104,7 +105,7 @@ path:'',
     component: UserpostsComponent
     },{
       path:'review',
-    component: UsermainComponent
+    component: UserreviewComponent
     },{
       path:'cropdiary',
     component: UsercropdiaryComponent
@@ -304,7 +305,8 @@ path:'',
     PaymenthisComponent,
     PaymenttempComponent,
     UsereditprofileComponent,
-    UsercropsComponent
+    UsercropsComponent,
+    AddcropComponent
 
    
   ],
@@ -316,7 +318,7 @@ path:'',
    
     RouterModule.forRoot(appRoutes),
      FlashMessagesModule,
-    Ng2Bs3ModalModule 
+    Ng2Bs3ModalModule
 
   ],
   providers: [AuthService,AuthGuard],
