@@ -19,15 +19,18 @@ const UserSchema = mongoose.Schema({
 
     },
     acres: {
-        type: String,
+        type: String
 
     },
+    soiltype:{
+type: String
+    },
     irr: {
-        type: String,
+        type: String
 
     },
     farm: {
-        type: String,
+        type: String
 
     },
     crops: [{
@@ -67,8 +70,8 @@ const UserSchema = mongoose.Schema({
     pay_his: [{
         id: String,
         amount: Number,
-        to: Number,
-        from: Number,
+        to: String,
+        from: String,
         date: {
             type: Date,
             default: Date.now
@@ -189,7 +192,12 @@ module.exports.product = function(callback) {
     },'product', callback);
 }
 
+module.exports.profile = function(id,callback) {
 
+    User.find({_id:id
+       
+    },'name phone address irr farm acres verify soiltype', callback);
+}
 
 
 module.exports.incPayment = function(id, rs, callback) {
@@ -215,11 +223,7 @@ module.exports.updatePayment = function(id, det, callback) {
     const con = {
         _id: id
     };
-    const update = {
-        $inc: {
-            payment: det.rs
-        }
-    };
+  
     const options = {
         multi: false
     };

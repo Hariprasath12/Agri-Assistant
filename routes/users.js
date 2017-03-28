@@ -82,10 +82,15 @@ router.post('/authenticate', (req, res, next) => {
 router.get('/profile', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
-    res.json({
-        user: req.user
-    });
+
+     let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.profile(id,(err,profile)=>{
+        res.send(profile);
+    })
 });
+
 router.get('/posts', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
@@ -117,9 +122,18 @@ router.post('/addpayment', passport.authenticate('users', {
     pro = req.user;
     id = pro.id;
 let rs=req.body.rs;
+const pay = {
+        from:'bank',
+        to: id,
+        amount:rs
+    };
+    console.log(pay);
     User.incPayment(id,rs, (err, payment) => {
+            User.updatePayment(id, pay, (err, payment) => {
 
-        res.send(payment);
+                    res.send(payment);
+                });
+        
     });
 });
 
@@ -177,6 +191,9 @@ router.get('/cropdiary', passport.authenticate('users', {
      res.send(payment);
     });
 });
+
+
+
 
 router.get('/paymenthistory', passport.authenticate('users', {
     session: false

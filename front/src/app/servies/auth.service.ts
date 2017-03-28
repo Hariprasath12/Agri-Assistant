@@ -100,6 +100,18 @@ cropdiary(){
       .map(res => res.json());
   }
 
+getcrops(){
+   let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/getCrops',{headers: headers})
+      .map(res => res.json());
+
+}
+
+
+
  post(){
     let headers = new Headers();
     this.loadToken();

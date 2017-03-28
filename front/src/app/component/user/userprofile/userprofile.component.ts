@@ -18,9 +18,9 @@ post:any;
 
 this.authService.getProfile().subscribe(post=>{
     
-     this.post=post.user;
+     this.post=post;
 
-console.log(this.post);
+// console.log(this.post);
 
 
 
