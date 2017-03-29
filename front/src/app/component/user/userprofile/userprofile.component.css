@@ -1,6 +1,7 @@
 #profile{
 	background:#ECF0F1;
 	margin-top: 30px;
+	border-radius: 5px;
 }
 #addcrop{
 margin-top: 30px;
@@ -10,4 +11,10 @@ margin-top: 30px;
 }
 #usercrops{
 	margin-top: 40px;
+}
+#edit{
+	float: right;
+	
+	padding: 5px;
+	border-radius: 3px;
 }

@@ -61,12 +61,12 @@ this.authService.addcrops(event).subscribe(rs=>{
 
 this.flashMessage.show('Your crops added', {
           cssClass: 'alert-success',
-          timeout: 5000});
+          timeout: 1000});
 }
     else{
   this.flashMessage.show('someerror', {
           cssClass: 'alert-danger',
-          timeout: 5000});
+          timeout: 1000});
   
     }
   });

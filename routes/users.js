@@ -90,12 +90,56 @@ router.get('/profile', passport.authenticate('users', {
         res.send(profile);
     })
 });
+router.post('/profile', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+
+     let pro, id;
+    pro = req.user;
+    id = pro.id;
+    const prof={
+            name: req.body.name,
+            address: req.body.address,
+        soiltype: req.body.soiltype,
+        irr: req.body.irr,
+        farm: req.body.farm,
+        acres: req.body.acres,
+       
+
+    }
+    User.updateprofile(id,prof,(err,profile)=>{
+        res.send(profile);
+    })
+});
 
 router.get('/posts', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
 
     agri.getAllPosts((err, post) => {
+
+        res.send(post);
+    });
+});
+router.get('/favposts', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+ let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.getfavpost(id,(err, post) => {
+
+        res.send(post);
+    });
+});
+router.post('/favpost', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+ let pro, id;
+    pro = req.user;
+    id = pro.id;
+let ref=req.body.ref;
+    User.favpost(id,ref,(err, post) => {
 
         res.send(post);
     });
@@ -127,7 +171,7 @@ const pay = {
         to: id,
         amount:rs
     };
-    console.log(pay);
+    // console.log(pay);
     User.incPayment(id,rs, (err, payment) => {
             User.updatePayment(id, pay, (err, payment) => {
 
@@ -245,7 +289,7 @@ router.post('/updatecrops', passport.authenticate('users', {
     const crops = {
         crop: req.body.crops
     };
-    console.log(crops);
+    // console.log(crops);
     User.updateCrops(crops, id, (err, crop) => {
 
         res.send(crop);

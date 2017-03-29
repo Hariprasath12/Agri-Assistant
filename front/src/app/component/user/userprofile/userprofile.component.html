@@ -6,36 +6,42 @@
 <div *ngIf="post"> 
 <div *ngFor="let posts of post" > 
 <form class="form-horizontal">
-<legend align="center">Profile</legend>
-<h6  (click)="editprofile()"> Edit Profile</h6>
+<legend align="center">Profile<h6  (click)="editprofile()" class="btn-primary" id="edit"> Edit Profile</h6></legend>
+
   <div class="form-group">
-    <label class="col-sm-5 control-label">Name</label>
+    <label class="col-sm-5 control-label">Name:</label>
     <div class="col-sm-7">
       <p class="form-control-static">{{posts.name}}</p>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-5 control-label">Phone</label>
+    <label class="col-sm-5 control-label">Phone:</label>
     <div class="col-sm-7">
       <p class="form-control-static">{{posts.phone}}</p>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-5 control-label">Irrigation</label>
+    <label class="col-sm-5 control-label">Irrigation:</label>
     <div class="col-sm-7">
       <p class="form-control-static">{{posts.irr}}</p>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-5 control-label">Address</label>
+    <label class="col-sm-5 control-label">Address:</label>
     <div class="col-sm-7">
       <p class="form-control-static">{{posts.address}}</p>
     </div>
   </div>
    <div class="form-group">
-    <label class="col-sm-5 control-label">Acres</label>
+    <label class="col-sm-5 control-label">Acres:</label>
     <div class="col-sm-7">
       <p class="form-control-static">{{posts.acres}}</p>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="col-sm-5 control-label">Soiltype:</label>
+    <div class="col-sm-7">
+      <p class="form-control-static">{{posts.soiltype}}</p>
     </div>
   </div>
 </form>

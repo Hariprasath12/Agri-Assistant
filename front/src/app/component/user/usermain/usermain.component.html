@@ -1,5 +1,28 @@
-<p>
-  usermain works!
-</p>
-<app-usercrops>
-</app-usercrops>
+<div> 
+<div> 
+<h2> welcome</h2>
+
+</div>
+<div class="row">
+<div class="col-md-7">
+<app-usernotify>
+</app-usernotify>
+<app-croplist [crops]="crops">
+</app-croplist>
+ </div> 
+ <div class="col-md-5"> 
+<div id="balance"> 
+<div *ngIf="payment">
+<h2> Balance:{{payment | currency:'INR':true}}</h2>
+</div></div>
+
+<app-whether>
+</app-whether>
+ </div>
+
+</div>
+
+
+</div>
+
+

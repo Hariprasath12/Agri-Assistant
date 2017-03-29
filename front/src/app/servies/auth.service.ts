@@ -16,6 +16,7 @@ export class AuthService {
     return this.http.post('http://localhost:3000/users/register', user,{headers: headers})
       .map(res => res.json());
   }
+
    registeragri(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
@@ -86,6 +87,14 @@ cropdiary(){
     return this.http.get('http://localhost:3000/users/cropdiary',{headers: headers})
       .map(res => res.json());
 
+}
+updateuserprofile(data){
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/profile',data,{headers: headers})
+      .map(res => res.json());
 }
 
 
@@ -248,6 +257,11 @@ getAllPosts(){
 }
 
 
+getweather(){
+return this.http.get('http://api.wunderground.com/api/35ff3b2e51125284/geolookup/conditions/forecast/q/India/Nasik.json')
+      .map(res => res.json());
+
+}
 
 
   storeUserData(token, user){

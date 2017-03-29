@@ -9,6 +9,7 @@ import{Router} from '@angular/router';
 })
 export class UserpostsComponent implements OnInit {
 posts:any;
+like:Boolean=false;
   constructor(private authService:AuthService,
   	private router:Router) { }
 
@@ -23,5 +24,16 @@ this.authService.getAllPosts().subscribe(post=>{
   	return false;
   });
   }
+onlike(i){
+  if(this.like){
+
+
+
+    this.like=false;
+  }
+else{
+ this.like=true;
+}
+}
 
 }

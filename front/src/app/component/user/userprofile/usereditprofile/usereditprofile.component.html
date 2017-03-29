@@ -1,43 +1,88 @@
-<div *ngIf="post"> 
+<div *ngIf="posts"> 
 
- <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
-        <!-- we will place our fields here -->
-        <div>
-        <label>Name</label>
-        <!--bind name to ngModel, it's required with minimum 5 characters-->
-        <input type="text" 
-            name="name" [(ngModel)]="post.name" 
-            #name="ngModel" required minlength="5">
-        <!--show error only when field is not valid & it's dirty or form submited-->
+ <div class="row">
+ <div class="col-md-6">
+<form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+           <legend>Edit Profile</legend>
+<div class="form-group">
+    <label class="col-sm-5 control-label">Name</label>
+    <div class="col-sm-7">
+      <input type="text" 
+            name="name" [(ngModel)]="posts.name" 
+            #name="ngModel" required minlength="5" class="form-control">
+        
         <small [hidden]="name.valid || (name.pristine && !f.submitted)">
             Name is required (minimum 5 characters).
         </small>
     </div>
-        <button type="submit">Submit</button>
-    </form>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-5 control-label">Address</label>
+    <div class="col-sm-7">
+       <input type="text" 
+            name="add" [(ngModel)]="posts.address" 
+            #add="ngModel" required minlength="5" class="form-control">
+      
+        <small [hidden]="add.valid || (add.pristine && !f.submitted)">
+            Name is required (minimum 5 characters).
+        </small>
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-5 control-label">Farm</label>
+    <div class="col-sm-7">
+     <input type="text" 
+            name="farm" [(ngModel)]="posts.farm" 
+            #farm="ngModel" required minlength="3" class="form-control">
+       
+        <small [hidden]="farm.valid || (farm.pristine && !f.submitted)">
+            Name is required (minimum 5 characters).
+        </small>
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-5 control-label">Acres</label>
+    <div class="col-sm-7">
+      <input type="number" 
+            name="acres" [(ngModel)]="posts.acres" 
+            #acres="ngModel" required class="form-control" >
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-5 control-label">Irrigation</label>
+    <div class="col-sm-7">
+      <input type="text" 
+            name="irr" [(ngModel)]="posts.irr" 
+            #irr="ngModel" required minlength="3" class="form-control">
+        
+        <small [hidden]="irr.valid || (irr.pristine && !f.submitted)">
+            Name is required (minimum 5 characters).
+        </small>
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-5 control-label">Soiltype</label>
+    <div class="col-sm-7">
+       <input type="text" 
+            name="soil" [(ngModel)]="posts.soil" 
+            #soil="ngModel" required minlength="5" class="form-control">
+       
+        <small [hidden]="soil.valid || (soil.pristine && !f.submitted)">
+            Name is required (minimum 5 characters).
+        </small>
+    </div>
+  </div>
+  <div class="form-group"> 
+  <div class="col-md-offset-5 col-md-7"> 
+  <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+  </div> </div>
+ </form>
+
+
+ </div> 
+
+
+ </div>
 
 </div>
 
-
-
-
-
-
-
-
-<!-- <div *ngIf="post"> 
-<div *ngFor="let crop of post;let i = index"> 
-
- <h2>Name</h2>
-<input type=" text" class="form-control"[(ngModel)]="crop.name" />
-<h2>Phone</h2>
-<input type=" text" class="form-control"[(ngModel)]="crop.phone" />
-<h2>Irrigation</h2>
-<input type=" text" class="form-control"[(ngModel)]="crop.irr" />
-<h2>Address</h2>
-<input type=" text" class="form-control"[(ngModel)]="crop.address" />
-<h2>Acres</h2>
-<input type=" text" class="form-control"[(ngModel)]="crop.acres" />
-
-</div>
-</div> -->

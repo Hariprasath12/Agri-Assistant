@@ -61,6 +61,7 @@ import { AddcropComponent } from './component/user/addcrop/addcrop.component';
 import { SortbydatePipe } from './pipes/sortbydate.pipe';
 import { WhetherComponent } from './component/user/whether/whether.component';
 import { UsernotifyComponent } from './component/user/usernotify/usernotify.component';
+import { CroplistComponent } from './component/user/croplist/croplist.component';
 
 
 
@@ -312,7 +313,8 @@ path:'',
     AddcropComponent,
     SortbydatePipe,
     WhetherComponent,
-    UsernotifyComponent
+    UsernotifyComponent,
+    CroplistComponent
 
    
   ],

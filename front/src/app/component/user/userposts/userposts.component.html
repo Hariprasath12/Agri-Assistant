@@ -6,6 +6,28 @@
   <div class="panel-body">
     <p>{{post.content}}</p>
   </div>
+<div *ngIf="!like"> 
+<div class="panel-footer">{{post.tag}}  
 
-<div class="panel-footer">{{post.tag}}  <span> {{post.date | date | uppercase }}</span>  </div>
+
+<span>
+<i (click)="onlike(i)" class="fa fa-heart fa-2x" aria-hidden="true"></i> {{post.date | date | uppercase }}</span>
+</div>
+
+  </div>
+
+  <div *ngIf="like"> 
+<div class="panel-footer">{{post.tag}}  
+
+
+<span>
+<i (click)="onlike(i)"  class="fa fa-heart-o  fa-2x" aria-hidden="true"></i> {{post.date | date | uppercase }}</span>
+</div>
+
+  </div>
+<!-- <a class="list-group-item active">
+		<h4 class="list-group-item-heading">{{post.title}}<span><h6> {{post.name}}</h6></span></h4>
+		<p class="list-group-item-text">{{post.content}} <span> {{post.date | date | uppercase }}</span></p>
+
+	</a> -->
 </div></div>

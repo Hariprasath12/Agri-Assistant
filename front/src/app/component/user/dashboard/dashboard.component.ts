@@ -17,8 +17,8 @@ user:Object;
  this.authService.getProfile().subscribe(profile=>{
 
 
-this.user=profile.user;
-
+this.user=profile[0];
+// console.log(profile);
 
   },
   err=>{

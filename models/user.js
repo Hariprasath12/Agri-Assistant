@@ -90,7 +90,8 @@ type: String
     verify: {
         type: Boolean,
         default: false
-    }
+    },
+    fav_post:[]
 
 });
 
@@ -137,6 +138,34 @@ const options={ multi: false}
     User.update(con,update,options,callback);
 }
 
+module.exports.favpost = function(id,ref, callback) {
+const con={_id:id};
+const update={$addToSet:{"fav_post":ref}};
+const options={ multi: false}
+
+    User.update(con,update,options,callback);
+}
+
+module.exports.getfavpost = function(id, callback) {
+    User.find({
+        _id: id
+    }, 'fav_post', callback);
+
+}
+
+
+
+
+
+
+
+module.exports.updateprofile = function(id,profile, callback) {
+const con={_id:id};
+const update={'name':profile.name,'irr':profile.irr,'acres':profile.acres,'soiltype':profile.soiltype,'farm':profile.farm,'address':profile.address};
+const options={ multi: false}
+
+    User.update(con,update,options,callback);
+}
 
 module.exports.deleteCrops = function(del, id, callback) {
     const con = {

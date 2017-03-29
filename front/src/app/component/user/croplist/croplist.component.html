@@ -1,0 +1,19 @@
+<div id="croplist"> 
+<div *ngIf="crops"> 
+<h2> Crop List</h2>
+<div *ngFor="let crop of crops;let i = index"> 
+
+<ul class="list-group">
+  <li class="list-group-item" > {{crop.crop}}<span>
+{{crop.date | date | uppercase}}
+     
+
+</span></li>
+ 
+</ul>
+</div>
+
+
+
+</div>
+</div>

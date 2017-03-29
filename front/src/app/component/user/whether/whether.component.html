@@ -1,3 +1,11 @@
-<p>
-  whether works!
-</p>
+<div id="weather">
+	<h2><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> weather </h2>
+ 
+
+<div *ngIf="low">
+	<h3>
+	<i class="fa fa-arrow-down" aria-hidden="true">{{low}}&deg;</i></h3>
+</div>
+<div *ngIf="high"><h3> 
+	 <i class="fa fa-arrow-up" aria-hidden="true">{{high}}&deg;</i></h3>
+</div></div>
