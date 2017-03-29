@@ -42,14 +42,14 @@ let a=event.rs;
       
       this.flashMessage.show('You money added', {
           cssClass: 'alert-success',
-          timeout: 5000});
+          timeout: 1000});
 
       this.payment+=a.rs;
     }
     else{
   this.flashMessage.show('someerror', {
           cssClass: 'alert-danger',
-          timeout: 5000});
+          timeout: 1000});
   
     }
   });

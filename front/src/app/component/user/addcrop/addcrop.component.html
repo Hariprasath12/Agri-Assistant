@@ -1,3 +1,14 @@
-<p>
-  addcrop works!
-</p>
+<div> 
+<div> 
+<form (submit)="oncropSubmit()">
+ <div class="form-group">
+    <label>Crop</label>
+    <input type="text" [(ngModel)]="crop" name="crop" class="form-control" required>
+  </div>
+ 
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+
+
+</div>
+</div>

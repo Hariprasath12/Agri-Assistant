@@ -1,6 +1,6 @@
 <div class="container-fluid"> 
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-6" id="profile">
 
 <div *ngIf="post"> 
 <div *ngFor="let posts of post" > 
@@ -38,7 +38,7 @@
 </div>
  </div>
 <div class="col-md-6">
-<app-usercrops>
+<app-usercrops  >
 </app-usercrops>
 
  </div>
@@ -48,5 +48,5 @@
 <app-usereditprofile>
 </app-usereditprofile>
 
-<app-addcrop>
+<app-addcrop (add)=onadd($event)>
 </app-addcrop>

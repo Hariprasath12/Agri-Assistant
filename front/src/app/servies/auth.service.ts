@@ -110,7 +110,16 @@ getcrops(){
 
 }
 
+addcrops(a){
+   let headers = new Headers();
+    this.loadToken();
 
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/updatecrops',a.crops,{headers: headers})
+      .map(res => res.json());
+
+}
 
  post(){
     let headers = new Headers();
