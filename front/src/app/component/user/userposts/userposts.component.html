@@ -1,14 +1,11 @@
-
-
 <div  *ngIf="posts"  id="posts">
  <div *ngFor="let post of posts;let i = index"> 
-    <div class="thumbnail">
-     
-      <div class="caption">
-        <h3>{{post.title}}-author</h3>
+  <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{post.title}}  <span> {{post.name}}</span> </div>
+  <div class="panel-body">
+    <p>{{post.content}}</p>
+  </div>
 
-        <p>{{post.content}}</p>
-        
-      </div>
-    </div>
-</div>
+<div class="panel-footer">{{post.tag}}  <span> {{post.date | date | uppercase }}</span>  </div>
+</div></div>

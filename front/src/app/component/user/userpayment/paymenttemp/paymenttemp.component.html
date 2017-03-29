@@ -1,11 +1,13 @@
-<div> 
+<div id="amount"> 
+<h3> Add cash:</h3>
 <form class="form-inline" (submit)="onaddSubmit()">
   <div class="form-group">
-    <label for="exampleInputName2">Amount</label>
+    <label for="exampleInputName2"><h3>Amount </h3></label>
+
     <input type="Number" class="form-control" [(ngModel)]="money" [ngModelOptions]="{standalone: true}" required>
   </div>
  
-  <button type="submit" class="btn btn-default">Add</button>
+  <button type="submit"  class="btn btn-default">Add</button>
 </form>
 
 </div>

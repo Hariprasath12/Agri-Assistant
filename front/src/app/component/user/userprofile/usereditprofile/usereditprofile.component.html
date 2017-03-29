@@ -1,1 +1,43 @@
+<div *ngIf="post"> 
 
+ <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+        <!-- we will place our fields here -->
+        <div>
+        <label>Name</label>
+        <!--bind name to ngModel, it's required with minimum 5 characters-->
+        <input type="text" 
+            name="name" [(ngModel)]="post.name" 
+            #name="ngModel" required minlength="5">
+        <!--show error only when field is not valid & it's dirty or form submited-->
+        <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+            Name is required (minimum 5 characters).
+        </small>
+    </div>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="post"> 
+<div *ngFor="let crop of post;let i = index"> 
+
+ <h2>Name</h2>
+<input type=" text" class="form-control"[(ngModel)]="crop.name" />
+<h2>Phone</h2>
+<input type=" text" class="form-control"[(ngModel)]="crop.phone" />
+<h2>Irrigation</h2>
+<input type=" text" class="form-control"[(ngModel)]="crop.irr" />
+<h2>Address</h2>
+<input type=" text" class="form-control"[(ngModel)]="crop.address" />
+<h2>Acres</h2>
+<input type=" text" class="form-control"[(ngModel)]="crop.acres" />
+
+</div>
+</div> -->

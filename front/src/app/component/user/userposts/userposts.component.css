@@ -1,3 +1,14 @@
 #posts{
 	padding-top: 40px;
 }
+
+.caption{
+	background-color: #f7f7f7;
+}
+span{
+	float: right;
+}
+
+.panel-heading,.panel-footer{
+	background-color: #f7f7f7;
+}

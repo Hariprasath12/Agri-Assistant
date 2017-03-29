@@ -1,8 +1,14 @@
 <div> 
 <div *ngIf="crops"> 
-<div *ngFor="let crop of crops;"> 
-{{crop.crop}}
+<div *ngFor="let crop of crops;let i = index"> 
+<ul class="list-group">
+  <li class="list-group-item" > {{crop.crop}}<span>
 {{crop.date | date | uppercase}}
+     
+<i (click)="deletecrop(i,crop._id)" class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+</span></li>
+ 
+</ul>
 </div>
 
 

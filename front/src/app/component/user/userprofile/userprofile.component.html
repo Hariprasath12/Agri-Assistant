@@ -1,52 +1,64 @@
 <div class="container-fluid"> 
-<div class="row">
-<div class="col-md-6" id="profile">
 
+<div>
+<div class="row">
+<div class="col-md-6" id="profile"> 
 <div *ngIf="post"> 
 <div *ngFor="let posts of post" > 
 <form class="form-horizontal">
+<legend align="center">Profile</legend>
+<h6  (click)="editprofile()"> Edit Profile</h6>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
+    <label class="col-sm-5 control-label">Name</label>
+    <div class="col-sm-7">
       <p class="form-control-static">{{posts.name}}</p>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Phone</label>
-    <div class="col-sm-10">
+    <label class="col-sm-5 control-label">Phone</label>
+    <div class="col-sm-7">
       <p class="form-control-static">{{posts.phone}}</p>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Irrigation</label>
-    <div class="col-sm-10">
+    <label class="col-sm-5 control-label">Irrigation</label>
+    <div class="col-sm-7">
       <p class="form-control-static">{{posts.irr}}</p>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Address</label>
-    <div class="col-sm-10">
+    <label class="col-sm-5 control-label">Address</label>
+    <div class="col-sm-7">
       <p class="form-control-static">{{posts.address}}</p>
     </div>
   </div>
-   
-
-  
-</form>
-
-</div>
-</div>
- </div>
-<div class="col-md-6">
-<app-usercrops  >
-</app-usercrops>
-
- </div>
-
+   <div class="form-group">
+    <label class="col-sm-5 control-label">Acres</label>
+    <div class="col-sm-7">
+      <p class="form-control-static">{{posts.acres}}</p>
+    </div>
   </div>
+</form>
 </div>
-<app-usereditprofile>
-</app-usereditprofile>
-
+</div>
+</div> 
+<div class="col-md-6" id="addcrop"> 
 <app-addcrop (add)=onadd($event)>
 </app-addcrop>
+<div id="croplist"> 
+<h4> Crop List:</h4>
+<div id="usercrops"> 
+<app-usercrops [crops]="crops">
+</app-usercrops>
+</div>
+</div>
+</div> 
+</div>
+ </div>
+</div>
+<div *ngIf="edit"> 
+<app-usereditprofile [post]="post" >
+</app-usereditprofile>
+
+</div>
+

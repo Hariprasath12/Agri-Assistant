@@ -36,8 +36,16 @@ onUserCreated(event){
 
 
 this.authService.addpost(event.post).subscribe(post=>{
+      this.authService.post().subscribe(post=>{
+       this.post=post[0].post;
+     // console.log(this.post);
       
-    this.post.push(event.post);
+},
+  err=>{
+    console.log("error");
+    return false;
+  });
+   
       
 },
   err=>{

@@ -1,12 +1,18 @@
-<div> 
+<div id="history"> 
+<h2> History:</h2>
 <div *ngIf="history"> 
-<div *ngFor="let his of history"> 
+<div *ngFor="let his of history | sortbydate:date:false"> 
 
-{{his.from}}
-{{his.to}}
-{{his.amount | currency:'INR':true}}
-{{his.date | date | uppercase}}
+<ul class="list-group">
+  <li class="list-group-item"><span>
+ From:{{his.from}}</span><span>
+  To:{{his.to}} </span><span> {{his.amount | currency:'INR':true}}</span>
 
+<span>{{his.date | date | uppercase}}
+ </span>
+  </li>
+
+</ul>
 
 </div>
 

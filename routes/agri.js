@@ -73,6 +73,7 @@ username=pro.name;
 var crop={
 des:req.body.des,
  By:id,
+ cropname:req.body.crop,
  name:username
 };
 console.log(fid);
@@ -108,6 +109,7 @@ router.post('/post', passport.authenticate('agri', { session: false }), (req, re
         content: req.body.content,
         tag: req.body.tag,
         title: req.body.title,
+        name:pro.name
         
 
     };

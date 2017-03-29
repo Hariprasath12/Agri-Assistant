@@ -1,7 +1,7 @@
 <div class="container-fluid" id="payment"> 
 
-<div class="row">
-<div class="col-md-4"> 
+<div class="row" id="cash">
+<div class="col-md-4" id="balance"> 
 <div *ngIf="payment">
 <div> 
 <h2>Balance:{{payment| currency:'INR':true}}</h2>
@@ -9,7 +9,7 @@
 </div>
 
 </div>
-<div class="col-md-6"> 
+<div class="col-md-6" id="addcash"> 
 
 <app-paymenttemp (add)=onadd($event)>
 </app-paymenttemp>
@@ -17,8 +17,14 @@
 </div>
  </div>
 
-<app-paymenthis>
+<div > 
+	<app-paymenthis [history]="history">
 </app-paymenthis>
+
+
+
+
+</div>
 </div>
 
 

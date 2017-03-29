@@ -49,8 +49,8 @@ type: String
         },
  By: String,
  name:String,
-        des: String
-       
+        des: String,
+       cropname:String
     }],
     product: [{
         id: String,

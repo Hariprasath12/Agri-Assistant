@@ -121,6 +121,15 @@ addcrops(a){
 
 }
 
+deletecrops(id){
+   let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.delete('http://localhost:3000/users/deletecrops/'+id,{headers: headers})
+      .map(res => res.json());
+}
+
  post(){
     let headers = new Headers();
     this.loadToken();

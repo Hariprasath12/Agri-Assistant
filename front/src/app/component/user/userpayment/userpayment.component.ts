@@ -12,6 +12,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class UserpaymentComponent implements OnInit {
 payment:Number;
+history:any;
   constructor(private authService:AuthService,
   	private router:Router,private flashMessage:FlashMessagesService) { }
 
@@ -19,17 +20,24 @@ payment:Number;
   	this.authService.userpayment().subscribe(pay=>{
     
      this.payment=pay.payment;
-
-
-
-
 },
   err=>{
   	console.log("error");
   	return false;
   });
-  }
-  onadd(event){
+this.authService.userpaymenthis().subscribe(his=>{
+    
+     // console.log(his[0].pay_his);
+this.history=his[0].pay_his;
+
+},
+  err=>{
+    console.log("error");
+    return false;
+  });
+}
+
+ onadd(event){
 
 
 
@@ -37,6 +45,18 @@ this.authService.useraddpayment(event.rs).subscribe(rs=>{
   
 let a=event.rs;
 // console.log(a.rs);
+this.authService.userpaymenthis().subscribe(his=>{
+    
+     // console.log(his[0].pay_his);
+this.history=his[0].pay_his;
+
+},
+  err=>{
+    console.log("error");
+    return false;
+  });
+
+
   
       if(rs.ok){
       

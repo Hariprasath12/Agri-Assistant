@@ -51,13 +51,16 @@ import { LogpaymentComponent } from './component/log/logpayment/logpayment.compo
 import { LogupdateComponent } from './component/log/logupdate/logupdate.component';
 import { LogtrackComponent } from './component/log/logtrack/logtrack.component';
 import { LogmainComponent } from './component/log/logmain/logmain.component';
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+
 import { AddpostComponent } from './component/agri/agripost/addpost/addpost.component';
 import { PaymenthisComponent } from './component/user/userpayment/paymenthis/paymenthis.component';
 import { PaymenttempComponent } from './component/user/userpayment/paymenttemp/paymenttemp.component';
 import { UsereditprofileComponent } from './component/user/userprofile/usereditprofile/usereditprofile.component';
 import { UsercropsComponent } from './component/user/userprofile/usercrops/usercrops.component';
 import { AddcropComponent } from './component/user/addcrop/addcrop.component';
+import { SortbydatePipe } from './pipes/sortbydate.pipe';
+import { WhetherComponent } from './component/user/whether/whether.component';
+import { UsernotifyComponent } from './component/user/usernotify/usernotify.component';
 
 
 
@@ -306,7 +309,10 @@ path:'',
     PaymenttempComponent,
     UsereditprofileComponent,
     UsercropsComponent,
-    AddcropComponent
+    AddcropComponent,
+    SortbydatePipe,
+    WhetherComponent,
+    UsernotifyComponent
 
    
   ],
@@ -317,8 +323,8 @@ path:'',
     FileUploadModule,
    
     RouterModule.forRoot(appRoutes),
-     FlashMessagesModule,
-    Ng2Bs3ModalModule
+     FlashMessagesModule
+   
 
   ],
   providers: [AuthService,AuthGuard],

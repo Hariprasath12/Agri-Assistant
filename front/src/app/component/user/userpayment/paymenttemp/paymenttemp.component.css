@@ -1,0 +1,13 @@
+#amount{
+	background-color: #f7f7f7;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 3px;
+	padding-left: 10px;
+}
+label{
+	padding-right: 10px;
+}
+button{
+	margin-left: 10px;
+}
