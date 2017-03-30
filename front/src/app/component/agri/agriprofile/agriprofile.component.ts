@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {AuthService} from '../../../servies/auth.service';
 import{Router} from '@angular/router';
+import 'rxjs/add/operator/map';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-agriprofile',
@@ -8,21 +10,34 @@ import{Router} from '@angular/router';
   styleUrls: ['./agriprofile.component.css']
 })
 export class AgriprofileComponent implements OnInit {
-user:Object;
+user:any;
+edit:Boolean=false;
 
   constructor(private authService:AuthService,
-  	private router:Router) { }
+  	private router:Router,private flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
   	this.authService.getProfileagri().subscribe(profile=>{
-       this.user=profile.user;
-       console.log(this.user);
+       this.user=profile;
+       
 },
   err=>{
   	console.log("error");
   	return false;
   });
   }
+
+  editprofile(){
+if(this.edit){
+ this.edit=false;
+}
+else{
+  this.edit=true;
+}
+
+
+  
+}
 
 
 

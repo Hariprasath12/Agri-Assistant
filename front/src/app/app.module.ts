@@ -62,6 +62,9 @@ import { SortbydatePipe } from './pipes/sortbydate.pipe';
 import { WhetherComponent } from './component/user/whether/whether.component';
 import { UsernotifyComponent } from './component/user/usernotify/usernotify.component';
 import { CroplistComponent } from './component/user/croplist/croplist.component';
+import { AgrieditprofileComponent } from './component/agri/agrieditprofile/agrieditprofile.component';
+import { AgripostlistComponent } from './component/agri/agripostlist/agripostlist.component';
+import { AgrinotifyComponent } from './component/agri/agrinotify/agrinotify.component';
 
 
 
@@ -314,7 +317,10 @@ path:'',
     SortbydatePipe,
     WhetherComponent,
     UsernotifyComponent,
-    CroplistComponent
+    CroplistComponent,
+    AgrieditprofileComponent,
+    AgripostlistComponent,
+    AgrinotifyComponent
 
    
   ],

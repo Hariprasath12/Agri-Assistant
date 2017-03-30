@@ -1,0 +1,18 @@
+
+<div id="postlist"> 
+<div *ngIf="post"> 
+<h4> List of posts</h4>
+ <ul id="posts" class="list-group">
+      <li *ngFor="let posts of post;let i = index" class="list-group-item">
+      
+     
+
+         <h4 class="list-group-item-heading">   {{i+1}}.{{ posts.title}}
+</h4>
+
+      </li>
+    </ul>
+
+
+</div>
+</div>

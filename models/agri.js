@@ -70,7 +70,12 @@ module.exports.getPost = function(id, callback) {
     User.find({_id:id},'post',callback);
    
 }
+module.exports.profile = function(id,callback) {
 
+    User.find({_id:id
+       
+    },'name phone address clg qualification email verify ', callback);
+}
 
 module.exports.addPost = function(post,id, callback) {
 User.update({_id:id},{$push:{"post":post}},callback);
@@ -96,6 +101,13 @@ module.exports.getAllPosts = function( callback) {
 module.exports.deletePost = function(del, callback) {
 const con={_id:del.userid};
 const update={$pull:{"post":{"_id":del.id}}};
+const options={ multi: false}
+
+    User.update(con,update,options,callback);
+}
+module.exports.updateprofile = function(id,profile, callback) {
+const con={_id:id};
+const update={'name':profile.name,'clg':profile.clg,'email':profile.email,'qualification':profile.qualification,'address':profile.address};
 const options={ multi: false}
 
     User.update(con,update,options,callback);

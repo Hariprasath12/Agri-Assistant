@@ -18,9 +18,15 @@ router.post('/register', (req, res, next) => {
 
     User.addUser(newUser, (err, user) => {
         if (err) {
-            res.json({ success: false, msg: 'Failed to register user' });
+            res.json({
+                success: false,
+                msg: 'Failed to register user'
+            });
         } else {
-            res.json({ success: true, msg: 'User registered' });
+            res.json({
+                success: true,
+                msg: 'User registered'
+            });
         }
     });
 });
@@ -33,7 +39,10 @@ router.post('/authenticate', (req, res, next) => {
     User.getUserByUsername(username, (err, user) => {
         if (err) throw err;
         if (!user) {
-            return res.json({ success: false, msg: 'User not found' });
+            return res.json({
+                success: false,
+                msg: 'User not found'
+            });
         }
 
         User.comparePassword(password, user.password, (err, isMatch) => {
@@ -54,31 +63,66 @@ router.post('/authenticate', (req, res, next) => {
                     }
                 });
             } else {
-                return res.json({ success: false, msg: 'Wrong password' });
+                return res.json({
+                    success: false,
+                    msg: 'Wrong password'
+                });
             }
         });
     });
 });
-router.get('/profile', passport.authenticate('agri', { session: false }), (req, res, next) => {
-    res.json({ user: req.user });
+router.get('/profile', passport.authenticate('agri', {
+    session: false
+}), (req, res, next) => {
+
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.profile(id, (err, profile) => {
+        res.send(profile);
+    })
+});
+router.post('/profile', passport.authenticate('agri', {
+    session: false
+}), (req, res, next) => {
+
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+const data={
+     name: req.body.name,
+        email: req.body.email,
+        address: req.body.address,
+        clg: req.body.clg,
+        qualification: req.body.qua
+       
+       
+}
+
+
+    User.updateprofile(id,data, (err, profile) => {
+        res.send(profile);
+    })
 });
 
 
-router.post('/cropdiary', passport.authenticate('agri', { session: false }), (req, res, next) => {
-let pro, id,fid;
+router.post('/cropdiary', passport.authenticate('agri', {
+    session: false
+}), (req, res, next) => {
+    let pro, id, fid;
     pro = req.user;
     id = pro.id;
-fid=req.body.id;
-username=pro.name;
-var crop={
-des:req.body.des,
- By:id,
- cropname:req.body.crop,
- name:username
-};
-console.log(fid);
-console.log(crop);
- far.updateCropdiary(fid,crop, (err, post) => {
+    fid = req.body.id;
+    username = pro.name;
+    var crop = {
+        des: req.body.des,
+        By: id,
+        cropname: req.body.crop,
+        name: username
+    };
+    console.log(fid);
+    console.log(crop);
+    far.updateCropdiary(fid, crop, (err, post) => {
         res.json(post);
     });
 
@@ -91,7 +135,9 @@ console.log(crop);
 
 
 
-router.get('/post', passport.authenticate('agri', { session: false }), (req, res, next) => {
+router.get('/post', passport.authenticate('agri', {
+    session: false
+}), (req, res, next) => {
     let pro, id;
     pro = req.user;
     id = pro.id;
@@ -101,7 +147,9 @@ router.get('/post', passport.authenticate('agri', { session: false }), (req, res
 
 });
 
-router.post('/post', passport.authenticate('agri', { session: false }), (req, res, next) => {
+router.post('/post', passport.authenticate('agri', {
+    session: false
+}), (req, res, next) => {
     let pro, id;
     pro = req.user;
     id = pro.id;
@@ -109,16 +157,19 @@ router.post('/post', passport.authenticate('agri', { session: false }), (req, re
         content: req.body.content,
         tag: req.body.tag,
         title: req.body.title,
-        name:pro.name
-        
+        name: pro.name
+
 
     };
     console.log(post);
 
-    User.addPost(post,id, (err, post) => {
+    User.addPost(post, id, (err, post) => {
         if (err) throw err;
         if (post.ok == 1) {
-            res.json({ success: true, msg: 'updated' });
+            res.json({
+                success: true,
+                msg: 'updated'
+            });
         }
 
     });
@@ -126,7 +177,9 @@ router.post('/post', passport.authenticate('agri', { session: false }), (req, re
 });
 
 
-router.delete('/post/:id', passport.authenticate('agri', { session: false }), (req, res, next) => {
+router.delete('/post/:id', passport.authenticate('agri', {
+    session: false
+}), (req, res, next) => {
     let id = req.params.id;
     let pro, userid;
     pro = req.user;
@@ -136,7 +189,7 @@ router.delete('/post/:id', passport.authenticate('agri', { session: false }), (r
         id: id
     }
 
-   
+
 
     User.deletePost(del, (err, post) => {
         if (err) throw err;

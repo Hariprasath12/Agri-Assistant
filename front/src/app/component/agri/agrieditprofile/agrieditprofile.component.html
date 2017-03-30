@@ -1,0 +1,72 @@
+<div *ngIf="posts"> 
+
+ <div class="row">
+ <div class="col-md-6">
+<form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+           <legend>Edit Profile</legend>
+<div class="form-group">
+    <label class="col-sm-5 control-label">Name</label>
+    <div class="col-sm-7">
+      <input type="text" 
+            name="name" [(ngModel)]="posts.name" 
+            #name="ngModel" required minlength="5" class="form-control">
+        
+        
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+    <label class="col-sm-5 control-label">Address</label>
+    <div class="col-sm-7">
+       <input type="text" 
+            name="add" [(ngModel)]="posts.address" 
+            #add="ngModel" required minlength="5" class="form-control">
+      
+       
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-5 control-label">College</label>
+    <div class="col-sm-7">
+     <input type="text" 
+            name="clg" [(ngModel)]="posts.clg" 
+            #clg="ngModel" required minlength="3" class="form-control">
+       
+     
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-5 control-label">Email</label>
+    <div class="col-sm-7">
+      <input type="text" 
+            name="email" [(ngModel)]="posts.email" 
+            #email="ngModel" required class="form-control" >
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-5 control-label">Qualification</label>
+    <div class="col-sm-7">
+      <input type="text" 
+            name="qua" [(ngModel)]="posts.qua" 
+            #qua="ngModel" required minlength="3" class="form-control">
+        
+      
+    </div>
+  </div>
+    
+  <div class="form-group"> 
+  <div class="col-md-offset-5 col-md-7"> 
+  <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+  </div> </div>
+ </form>
+
+
+ </div> 
+
+
+ </div>
+
+</div>
+
+
+

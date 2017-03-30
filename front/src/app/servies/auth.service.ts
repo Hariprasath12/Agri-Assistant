@@ -96,6 +96,30 @@ updateuserprofile(data){
     return this.http.post('http://localhost:3000/users/profile',data,{headers: headers})
       .map(res => res.json());
 }
+updateagriprofile(data){
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/agri/profile',data,{headers: headers})
+      .map(res => res.json());
+}
+updatelogprofile(data){
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/log/profile',data,{headers: headers})
+      .map(res => res.json());
+}
+updateretprofile(data){
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/profile',data,{headers: headers})
+      .map(res => res.json());
+}
 
 
 
