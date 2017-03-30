@@ -17,6 +17,8 @@ password:String;
 
 phone:Number;
 email:String;
+cname:String;
+cmail:String;
 
   constructor(private authService:AuthService,
   	private router:Router,
@@ -29,7 +31,10 @@ email:String;
   		name:this.name,
   		phone:this.phone,
   		password:this.password,
-      email:this.email}
+      email:this.email,
+      cname:this.cname,
+      cmail:this.cmail
+    }
 
 
   this.authService.registerlog(user).subscribe(data => {

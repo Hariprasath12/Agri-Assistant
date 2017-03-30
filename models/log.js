@@ -11,6 +11,16 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    cmail:{
+        type: String,
+        required: true
+
+    },
+    companyname:{
+        type: String,
+        required: true
+    },
+
     phone: {
         type: String,
         required: true
@@ -53,6 +63,17 @@ const UserSchema = mongoose.Schema({
         expecteddate: {
             type: Date
         }
+    }],
+     pay_his: [{
+        id: String,
+        amount: Number,
+        to: String,
+        from: String,
+        date: {
+            type: Date,
+            default: Date.now
+        }
+
     }],
     center: [{
         id: String,
@@ -111,6 +132,15 @@ module.exports.location = function(id, callback) {
     }, 'center', callback);
 
 }
+
+module.exports.updateprofile = function(id,profile, callback) {
+const con={_id:id};
+const update={'name':profile.name,'phone':profile.phone,'cmail':profile.cmail,'companyname':profile.companyname};
+const options={ multi: false}
+
+    User.update(con,update,options,callback);
+}
+
 module.exports.payment = function(id, callback) {
     // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
 
@@ -120,6 +150,14 @@ module.exports.payment = function(id, callback) {
 
 }
 
+module.exports.profile = function(id, callback) {
+    // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
+
+    User.find({
+        _id: id
+    }, 'name email phone cmail companyname', callback);
+
+}
 
 
 module.exports.addlocation = function(info, id, callback) {
@@ -135,16 +173,89 @@ module.exports.addlocation = function(info, id, callback) {
 
 }
 
-module.exports.updatetrack = function(info, id, callback) {
-    // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
-    console.log(info);
-    User.find({
-        
-        "track._id":info.id
-    },'track.location', callback);
+
+
+
+module.exports.incPayment = function(id, rs, callback) {
+
+    const con = {
+        _id: id
+    };
+    const update = {
+        $inc: {
+            payment: rs
+        }
+    };
+    const options = {
+        multi: false
+    };
+    User.update(con, update, options, callback);
+}
+
+
+
+module.exports.updatePayment = function(id, det, callback) {
+    console.log(det);
+    const con = {
+        _id: id
+    };
+  
+    const options = {
+        multi: false
+    };
+
+    const sub = {
+        $push: {
+            "pay_his": 
+                det
+            
+        }
+    };
+
+    User.update(con, sub, options, callback);
 
 }
 
+
+module.exports.updatetrack = function(uid,info, id, callback) {
+   // console.log(info);
+   // console.log(uid);
+   // console.log(id);
+   const con = {
+        _id: id,
+        'track._id':uid
+
+    };
+  
+    const options = {
+        multi: false
+    };
+
+    const sub = {
+        $addToSet: {
+            "location": 
+                info
+            
+        }
+    };
+
+    User.update(con, sub,  callback);
+
+   User.find({
+        
+        'track._id':uid
+
+    }, 'track',callback);
+
+}
+
+
+module.exports.paymentHis = function(id, callback) {
+
+    User.find({
+        _id: id
+    }, 'pay_his', callback);
+}
 
 module.exports.addUser = function(newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {

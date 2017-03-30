@@ -5,26 +5,27 @@ import 'rxjs/add/operator/map';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
-  selector: 'app-logtrack',
-  templateUrl: './logtrack.component.html',
-  styleUrls: ['./logtrack.component.css']
+  selector: 'app-updatetrack',
+  templateUrl: './updatetrack.component.html',
+  styleUrls: ['./updatetrack.component.css']
 })
-export class LogtrackComponent implements OnInit {
-wtrack:Boolean=false;
-trackd:any;
+export class UpdatetrackComponent implements OnInit {
+id:String;
+loc:String;
   constructor(private authService:AuthService,
   	private router:Router,private flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
   }
-
-   ontrack(event){
-this.wtrack=true;
-
-
- this.authService. trackbyid(event.track).subscribe(pay=>{
+ 
+  onupSubmit(){
+  	const data={
+      id:this.id,
+      loc:this.loc
+    }
+this.authService.updatetrack(data).subscribe(pay=>{
     
-   this.trackd=pay;
+   console.log(pay);
     
 },
   err=>{
@@ -32,6 +33,8 @@ this.wtrack=true;
     return false;
   });
 
- }
+
+
+  }
 
 }

@@ -15,40 +15,31 @@
     </div>
   </div>
   
-  <div class="form-group">
-    <label class="col-sm-5 control-label">Address</label>
-    <div class="col-sm-7">
-       <input type="text" 
-            name="add" [(ngModel)]="posts.address" 
-            #add="ngModel" required minlength="5" class="form-control">
-      
-       
-    </div>
-  </div>
+  
     <div class="form-group">
-    <label class="col-sm-5 control-label">College</label>
+    <label class="col-sm-5 control-label">Phone</label>
     <div class="col-sm-7">
-     <input type="text" 
-            name="clg" [(ngModel)]="posts.clg" 
-            #clg="ngModel" required minlength="3" class="form-control">
+     <input type="number" 
+            name="phone" [(ngModel)]="posts.phone" 
+            #phone="ngModel" required minlength="3" class="form-control">
        
      
     </div>
   </div>
     <div class="form-group">
-    <label class="col-sm-5 control-label">Email</label>
+    <label class="col-sm-5 control-label">Company Email</label>
     <div class="col-sm-7">
       <input type="text" 
-            name="email" [(ngModel)]="posts.email" 
-            #email="ngModel" required class="form-control" >
+            name="cemail" [(ngModel)]="posts.cmail" 
+            #cemail="ngModel" required class="form-control" >
     </div>
   </div>
     <div class="form-group">
-    <label class="col-sm-5 control-label">Qualification</label>
+    <label class="col-sm-5 control-label">Company Name</label>
     <div class="col-sm-7">
       <input type="text" 
-            name="qua" [(ngModel)]="posts.qua" 
-            #qua="ngModel" required minlength="3" class="form-control">
+            name="cname" [(ngModel)]="posts.cname" 
+            #cname="ngModel" required minlength="3" class="form-control">
         
       
     </div>
@@ -67,6 +58,7 @@
  </div>
 
 </div>
+
 
 
 

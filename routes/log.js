@@ -9,7 +9,10 @@ router.post('/register', (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,
-    password: req.body.password
+    password: req.body.password,
+    companyname:req.body.cname,
+    cmail:req.body.cmail,
+
   });
 
   User.addUser(newUser, (err, user) => {
@@ -56,7 +59,38 @@ router.post('/authenticate', (req, res, next) => {
   });
 });
 router.get('/profile', passport.authenticate('log', {session:false}), (req, res, next) => {
-  res.json({user: req.user});
+ 
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.profile(id, (err, profile) => {
+        res.send(profile);
+    })
+
+router.post('/profile', passport.authenticate('log', {
+    session: false
+}), (req, res, next) => {
+
+     let pro, id;
+    pro = req.user;
+    id = pro.id;
+    const prof={
+            name: req.body.name,
+            phone: req.body.phone,
+            cmail:req.body.cmail,
+            companyname:req.body.companyname
+
+      
+       
+
+    }
+    User.updateprofile(id,prof,(err,profile)=>{
+        res.send(profile);
+    })
+});
+
+
+
 });
 router.post('/inittrack', passport.authenticate('log', {session:false}), (req, res, next) => {
    let pro, id;
@@ -104,7 +138,7 @@ router.post('/location', passport.authenticate('log', {session:false}), (req, re
     pro = req.user;
     id = pro.id;
 var loc={
-  loc:req.body.loc,
+  location:req.body.loc,
   address:req.body.address,
   phone:req.body.phone,
   email:req.body.email
@@ -121,12 +155,14 @@ router.post('/updatetrack', passport.authenticate('log', {session:false}), (req,
     pro = req.user;
     id = pro.id;
 
-var info={
-  location:req.body.loc,
-  id:req.body.id
-}
-console.log(info);
-User.updatetrack(info,id,(err,post)=>{
+
+ const location={
+  location:req.body.loc};
+  
+  let uid=req.body.id;
+
+
+User.updatetrack(uid,location,id,(err,post)=>{
    if(err) throw err;
 res.send(post);
 });
@@ -143,6 +179,39 @@ res.send(post);
 });
 
 
+router.get('/paymenthistory', passport.authenticate('log', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.paymentHis(id, (err, payment) => {
+
+        res.send(payment);
+    });
+});
+
+router.post('/addpayment', passport.authenticate('log', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+let rs=req.body.rs;
+const pay = {
+        from:'bank',
+        to: id,
+        amount:rs
+    };
+    // console.log(pay);
+    User.incPayment(id,rs, (err, payment) => {
+            User.updatePayment(id, pay, (err, payment) => {
+
+                    res.send(payment);
+                });
+        
+    });
+});
 
 
 

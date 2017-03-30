@@ -1,0 +1,13 @@
+<div id="amount"> 
+<h3> Track order:</h3>
+<form class="form-inline" (submit)="onaddSubmit()">
+  <div class="form-group">
+    
+
+    <input type="text" class="form-control" [(ngModel)]="track" [ngModelOptions]="{standalone: true}" required>
+  </div>
+ 
+  <button type="submit"  class="btn btn-default">Add</button>
+</form>
+
+</div>

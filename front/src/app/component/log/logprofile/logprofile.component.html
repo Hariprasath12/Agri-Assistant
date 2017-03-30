@@ -1,4 +1,48 @@
-<div *ngIf="user">
-<h2 class="page-header">{{user.name}} </h2>
-<p> {{user.phone}}</p>
- </div>
+<div *ngIf="user"> 
+<div *ngFor="let posts of user" > 
+<form class="form-horizontal">
+<legend align="center">Profile<h6  (click)="editprofile()" class="btn-primary" id="edit"> Edit Profile</h6></legend>
+
+  <div class="form-group">
+    <label class="col-sm-5 control-label">Name:</label>
+    <div class="col-sm-7">
+      <p class="form-control-static">{{posts.name}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-5 control-label">Phone:</label>
+    <div class="col-sm-7">
+      <p class="form-control-static">{{posts.phone}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-5 control-label">Email:</label>
+    <div class="col-sm-7">
+      <p class="form-control-static">{{posts.email}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-5 control-label">Company Name:</label>
+    <div class="col-sm-7">
+      <p class="form-control-static">{{posts.companyname}}</p>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="col-sm-5 control-label">Company Mail:</label>
+    <div class="col-sm-7">
+      <p class="form-control-static">{{posts.cmail}}</p>
+    </div>
+  </div>
+ 
+</form>
+</div>
+</div>
+
+
+
+<div *ngIf="edit"> 
+<app-logeditprofile [user]="user" >
+</app-logeditprofile>
+
+</div>
+

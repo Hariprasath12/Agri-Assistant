@@ -1,3 +1,8 @@
-<p>
-  logtrack works!
-</p>
+
+<app-updatetrack>
+</app-updatetrack>
+<app-trakpaymentupdate (add)=ontrack($event)>
+</app-trakpaymentupdate>
+<div *ngIf="wtrack"> 
+<app-trackview [trackd]="trackd">
+</app-trackview>

@@ -79,6 +79,16 @@ export class AuthService {
       .map(res => res.json());
   }
 
+
+getProfilelog(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/log/profile',{headers: headers})
+      .map(res => res.json());
+  }
+
 cropdiary(){
     let headers = new Headers();
     this.loadToken();
@@ -256,19 +266,21 @@ useraddpayment(rs){
       .map(res => res.json());
 
 }
-
-
-
-
-
-  getProfilelog(){
+logaddpayment(rs){
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type','application/json');
-    return this.http.get('http://localhost:3000/log/profile',{headers: headers})
+    return this.http.post('http://localhost:3000/log/addpayment',rs,{headers: headers})
       .map(res => res.json());
-  }
+
+}
+
+
+
+
+
+
 
 getAllPosts(){
    let headers = new Headers();
@@ -286,6 +298,56 @@ return this.http.get('http://api.wunderground.com/api/35ff3b2e51125284/geolookup
       .map(res => res.json());
 
 }
+
+inittrack(data){
+   let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/log/inittrack',data,{headers: headers})
+      .map(res => res.json());
+
+}
+trackbyid(id){
+
+   let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/log/trackbyid/'+id.track,{headers: headers})
+      .map(res => res.json());
+
+
+}
+getlocation()
+{
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/log/location',{headers: headers})
+      .map(res => res.json());
+
+}
+postlocation(data)
+{let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/log/location',data,{headers: headers})
+      .map(res => res.json());
+
+}
+updatetrack(data){
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/log/updatetrack',data,{headers: headers})
+      .map(res => res.json());
+
+}
+
 
 
   storeUserData(token, user){

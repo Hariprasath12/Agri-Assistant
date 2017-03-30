@@ -65,6 +65,16 @@ import { CroplistComponent } from './component/user/croplist/croplist.component'
 import { AgrieditprofileComponent } from './component/agri/agrieditprofile/agrieditprofile.component';
 import { AgripostlistComponent } from './component/agri/agripostlist/agripostlist.component';
 import { AgrinotifyComponent } from './component/agri/agrinotify/agrinotify.component';
+import { LogeditprofileComponent } from './component/log/logeditprofile/logeditprofile.component';
+import { AddlocationComponent } from './component/log/addlocation/addlocation.component';
+import { UpdatepriceComponent } from './component/log/updateprice/updateprice.component';
+import { LognotifyComponent } from './component/log/lognotify/lognotify.component';
+import { LogpaymenthisComponent } from './component/log/logpaymenthis/logpaymenthis.component';
+import { LogaddpaymentComponent } from './component/log/logaddpayment/logaddpayment.component';
+import { LocationlistComponent } from './component/log/locationlist/locationlist.component';
+import { TrakpaymentupdateComponent } from './component/log/trakpaymentupdate/trakpaymentupdate.component';
+import { TrackviewComponent } from './component/log/trackview/trackview.component';
+import { UpdatetrackComponent } from './component/log/updatetrack/updatetrack.component';
 
 
 
@@ -320,7 +330,17 @@ path:'',
     CroplistComponent,
     AgrieditprofileComponent,
     AgripostlistComponent,
-    AgrinotifyComponent
+    AgrinotifyComponent,
+    LogeditprofileComponent,
+    AddlocationComponent,
+    UpdatepriceComponent,
+    LognotifyComponent,
+    LogpaymenthisComponent,
+    LogaddpaymentComponent,
+    LocationlistComponent,
+    TrakpaymentupdateComponent,
+    TrackviewComponent,
+    UpdatetrackComponent
 
    
   ],
