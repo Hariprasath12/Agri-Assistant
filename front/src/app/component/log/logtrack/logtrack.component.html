@@ -7,6 +7,9 @@
 <div class="col-md-6"> 
 <app-trakpaymentupdate (add)=ontrack($event)>
 </app-trakpaymentupdate>
+<div *ngIf="wtrack" > 
+<i (click)="close()" class="fa fa-times" aria-hidden="true"></i>
+</div>
 <div *ngIf="wtrack"> 
 <app-trackview [trackd]="trackd">
 </app-trackview>

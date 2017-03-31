@@ -34,5 +34,8 @@ this.wtrack=true;
   });
 
  }
+ close(){
+   this.wtrack=false;
+ }
 
 }
