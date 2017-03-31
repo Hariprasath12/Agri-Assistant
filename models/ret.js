@@ -77,6 +77,16 @@ module.exports.getUserByUsername = function(username, callback) {
     User.findOne(query, callback);
 }
 
+
+module.exports.profile = function(id, callback) {
+    // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
+
+    User.find({
+        _id: id
+    }, 'name email companyname address phone companytype', callback);
+
+}
+
 module.exports.addUser = function(newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {

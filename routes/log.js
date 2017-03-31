@@ -65,7 +65,7 @@ router.get('/profile', passport.authenticate('log', {session:false}), (req, res,
     id = pro.id;
     User.profile(id, (err, profile) => {
         res.send(profile);
-    })
+    }});
 
 router.post('/profile', passport.authenticate('log', {
     session: false

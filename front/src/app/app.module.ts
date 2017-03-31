@@ -75,6 +75,10 @@ import { LocationlistComponent } from './component/log/locationlist/locationlist
 import { TrakpaymentupdateComponent } from './component/log/trakpaymentupdate/trakpaymentupdate.component';
 import { TrackviewComponent } from './component/log/trackview/trackview.component';
 import { UpdatetrackComponent } from './component/log/updatetrack/updatetrack.component';
+import { RetaddpaymentComponent } from './component/ret/retaddpayment/retaddpayment.component';
+import { RetpaymenthisComponent } from './component/ret/retpaymenthis/retpaymenthis.component';
+import { ReteditprofileComponent } from './component/ret/reteditprofile/reteditprofile.component';
+import { RettrackviewComponent } from './component/ret/rettrackview/rettrackview.component';
 
 
 
@@ -340,7 +344,11 @@ path:'',
     LocationlistComponent,
     TrakpaymentupdateComponent,
     TrackviewComponent,
-    UpdatetrackComponent
+    UpdatetrackComponent,
+    RetaddpaymentComponent,
+    RetpaymenthisComponent,
+    ReteditprofileComponent,
+    RettrackviewComponent
 
    
   ],

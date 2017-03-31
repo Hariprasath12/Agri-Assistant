@@ -79,8 +79,11 @@ router.post('/authenticate', (req, res, next) => {
 router.get('/profile', passport.authenticate('ret', {
     session: false
 }), (req, res, next) => {
-    res.json({
-        user: req.user
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.profile(id, (err, profile) => {
+        res.send(profile);
     });
 });
 
