@@ -233,7 +233,7 @@ module.exports.updatetrack = function(uid,info, id, callback) {
 
     const sub = {
         $addToSet: {
-            "location": 
+            "track.$.location": 
                 info
             
         }
@@ -241,11 +241,11 @@ module.exports.updatetrack = function(uid,info, id, callback) {
 
     User.update(con, sub,  callback);
 
-   User.find({
+   // User.find({
         
-        'track._id':uid
+   //      'track._id':uid
 
-    }, 'track',callback);
+   //  }, 'track',callback);
 
 }
 

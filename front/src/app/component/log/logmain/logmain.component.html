@@ -1,3 +1,35 @@
-<p>
-  logmain works!
-</p>
+<div id="logmain"> 
+<div class="row"> 
+<div class="col-md-6"> 
+
+<app-lognotify>
+</app-lognotify>
+</div>
+<div class="col-md-6"> 
+<div id="balance"> 
+<div *ngIf="payment">
+<div> 
+<h2>Balance:{{payment| currency:'INR':true}}</h2>
+</div>
+</div></div>
+<app-locationlist [loc]="loc">
+</app-locationlist>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
