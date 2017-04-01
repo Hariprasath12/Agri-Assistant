@@ -1,3 +1,15 @@
-<p>
-  rettrackview works!
-</p>
+<div id="trackview"> 
+<div *ngIf="trackd"> 
+<div *ngFor="let t of trackd"> 
+
+
+
+
+
+<ul class="list-group">
+  <li class="list-group-item">  {{t.location}}  
+   <span>{{t.Date | date | uppercase}} </span> </li>
+
+</ul>
+</div></div>
+</div>

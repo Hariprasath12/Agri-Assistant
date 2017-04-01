@@ -25,7 +25,7 @@ this.wtrack=true;
  this.authService. trackbyid(event.track).subscribe(pay=>{
     
    this.trackd=pay[0].track[0].location;
-   console.log(this.trackd);
+   console.log(pay);
     
 },
   err=>{

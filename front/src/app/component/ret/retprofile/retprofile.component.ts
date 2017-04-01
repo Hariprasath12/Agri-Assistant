@@ -11,6 +11,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class RetprofileComponent implements OnInit {
 user:any;
+edit:any;
   constructor(private authService:AuthService,
   	private router:Router,private flashMessage:FlashMessagesService) { }
 
@@ -24,5 +25,13 @@ user:any;
   	return false;
   });
   }
+    editprofile(){
+if(this.edit){
+ this.edit=false;
+}
+else{
+  this.edit=true;
+}
+}
 
 }

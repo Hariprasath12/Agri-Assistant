@@ -3,27 +3,25 @@ import {AuthService} from '../../../servies/auth.service';
 import{Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 
-
 @Component({
-  selector: 'app-retaddpayment',
-  templateUrl: './retaddpayment.component.html',
-  styleUrls: ['./retaddpayment.component.css']
+  selector: 'app-rettrackid',
+  templateUrl: './rettrackid.component.html',
+  styleUrls: ['./rettrackid.component.css']
 })
-export class RetaddpaymentComponent implements OnInit {
-money:Number;
+export class RettrackidComponent implements OnInit {
+track:String;
   constructor(private authService:AuthService,
   	private router:Router) { }
 
   ngOnInit() {
   }
-   @Output() add =new EventEmitter();
+  @Output() add =new EventEmitter();
   onaddSubmit(){
-    
   	const a={
-  		rs:this.money
+  		track:this.track
   	}
    
-this.add.emit({rs:a});
+this.add.emit({track:a});
 }
 
 }

@@ -37,6 +37,7 @@ const UserSchema = mongoose.Schema({
     track: [{
         id: String,
         price: Number,
+        ref:String,
         delivery: {
             type: Boolean,
             default: false
@@ -46,7 +47,7 @@ const UserSchema = mongoose.Schema({
             default: Date.now
         },
         user: [{
-            ref:String,
+            
             name: String,
             phone: Number,
             email: String,
@@ -115,15 +116,24 @@ module.exports.inittrack = function(info, id, callback) {
 module.exports.trackbyid = function(id, callback) {
     // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
 
-    User.find({
-        track: {
-            $elemMatch: {
-                _id: id
-            }
-        }
-    }, 'track.location', callback);
+   User.find({
+        "track._id":id 
+        
+    },'track.$.location', callback);
 
 }
+module.exports.trackbyref = function(id,ref, callback) {
+    // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
+
+    User.find({
+        "track._id":id 
+        
+    },'track.$.location', callback);
+
+}
+
+
+
 module.exports.location = function(id, callback) {
     // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})
 
@@ -149,6 +159,9 @@ module.exports.payment = function(id, callback) {
     }, 'payment', callback);
 
 }
+
+
+
 
 module.exports.profile = function(id, callback) {
     // db.users.find({awards: {$elemMatch: {award:'National Medal', year:1975}}})

@@ -17,7 +17,7 @@ user:Object;
  this.authService.getProfilelog().subscribe(profile=>{
 
 
-this.user=profile.user;
+this.user=profile[0];
 
 
 

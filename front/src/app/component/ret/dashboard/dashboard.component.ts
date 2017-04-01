@@ -14,7 +14,7 @@ user:Object;
   	private router:Router) { }
   ngOnInit() {  
  this.authService.getProfileret().subscribe(profile=>{
-this.user=profile.user;
+this.user=profile[0];
 // console.log(str.user);
   },
   err=>{

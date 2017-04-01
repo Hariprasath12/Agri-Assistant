@@ -79,6 +79,8 @@ import { RetaddpaymentComponent } from './component/ret/retaddpayment/retaddpaym
 import { RetpaymenthisComponent } from './component/ret/retpaymenthis/retpaymenthis.component';
 import { ReteditprofileComponent } from './component/ret/reteditprofile/reteditprofile.component';
 import { RettrackviewComponent } from './component/ret/rettrackview/rettrackview.component';
+import { RettrackidComponent } from './component/ret/rettrackid/rettrackid.component';
+import { RetnotifyComponent } from './component/ret/retnotify/retnotify.component';
 
 
 
@@ -348,7 +350,9 @@ path:'',
     RetaddpaymentComponent,
     RetpaymenthisComponent,
     ReteditprofileComponent,
-    RettrackviewComponent
+    RettrackviewComponent,
+    RettrackidComponent,
+    RetnotifyComponent
 
    
   ],

@@ -275,6 +275,16 @@ logaddpayment(rs){
       .map(res => res.json());
 
 }
+retaddpayment(rs){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/addpayment',rs,{headers: headers})
+      .map(res => res.json());
+
+}
+
 
 
 
@@ -315,6 +325,18 @@ trackbyid(id){
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type','application/json');
     return this.http.get('http://localhost:3000/log/trackbyid/'+id.track,{headers: headers})
+      .map(res => res.json());
+
+
+}
+
+trackbyref(id){
+
+   let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/ret/trackbyid/'+id.track,{headers: headers})
       .map(res => res.json());
 
 

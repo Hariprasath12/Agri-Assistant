@@ -49,8 +49,8 @@ const UserSchema = mongoose.Schema({
     pay_his: [{
         id: String,
         amount: Number,
-        to: Number,
-        from: Number,
+        to: String,
+        from: String,
         date: {
             type: Date,
             default: Date.now
@@ -85,6 +85,15 @@ module.exports.profile = function(id, callback) {
         _id: id
     }, 'name email companyname address phone companytype', callback);
 
+}
+
+
+module.exports.updateprofile = function(id,profile, callback) {
+const con={_id:id};
+const update={'name':profile.name,'phone':profile.phone,'companyname':profile.companyname,'address':profile.address,'companytype':profile.companytype};
+const options={ multi: false}
+
+    User.update(con,update,options,callback);
 }
 
 module.exports.addUser = function(newUser, callback) {
@@ -136,14 +145,12 @@ module.exports.incPayment = function(id, rs, callback) {
 }
 
 module.exports.updatePayment = function(id, det, callback) {
-    const con = {
+       console.log(det);
+
+       const con = {
         _id: id
     };
-    const update = {
-        $inc: {
-            payment: det.rs
-        }
-    };
+   
     const options = {
         multi: false
     };
@@ -154,7 +161,7 @@ module.exports.updatePayment = function(id, det, callback) {
 
         }
     };
-    console.log(det);
+ 
     User.update(con, sub, options, callback);
 
 }

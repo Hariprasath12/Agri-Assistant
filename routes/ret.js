@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/ret');
 const far = require('../models/user');
+const log =require('../models/log');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -86,6 +87,23 @@ router.get('/profile', passport.authenticate('ret', {
         res.send(profile);
     });
 });
+router.post('/profile', passport.authenticate('ret', {
+    session: false
+}), (req, res, next) => {
+      let pro, id;
+    pro = req.user;
+    id = pro.id;
+    const prof={
+            name: req.body.name,
+            phone: req.body.phone,
+            companyname:req.body.companyname,
+            companytype:req.body.companytype,
+            address:req.body.address
+}
+    User.updateprofile(id,prof,(err,profile)=>{
+        res.send(profile);
+    })
+});
 
 router.get('/product', passport.authenticate('ret', {
     session: false
@@ -97,50 +115,100 @@ router.get('/product', passport.authenticate('ret', {
 
 
 });
+
+
+router.get('/trackbyid/:id', passport.authenticate('ret', {session:false}), (req, res, next) => {
+  
+let rid= req.params.id;
+let pro, id;
+    pro = req.user;
+    id = pro.id;
+ console.log(id);
+log.trackbyref(rid,id,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+
+
+router.get('/paymenthistory', passport.authenticate('ret', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.paymentHis(id, (err, payment) => {
+
+        res.send(payment);
+    });
+});
+
+
+
 router.get('/payment', passport.authenticate('ret', {
     session: false
 }), (req, res, next) => {
     let pro, id;
     pro = req.user;
     id = pro.id;
+    User.payment(id, (err, payment) => {
 
-
-    User.payment(id, (err, post) => {
-        res.json(post);
+        res.send(payment);
     });
-
-
 });
 
-router.post('/sendpayment', passport.authenticate('ret', {
+router.post('/addpayment', passport.authenticate('ret', {
     session: false
 }), (req, res, next) => {
     let pro, id;
     pro = req.user;
     id = pro.id;
-  let des=req.body.des;
+let rs=req.body.rs;
+const pay = {
+        from:'bank',
+        to: id,
+        amount:rs
+    };
+    // console.log(pay);
+    User.incPayment(id,rs, (err, payment) => {
+            User.updatePayment(id, pay, (err, payment) => {
+
+                    res.send(payment);
+                });
+        
+    });
+});
+
+router.post('/updatepayment', passport.authenticate('ret', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    let des=req.body.des;
+      
     let from = req.body.from;
     let to = req.body.to;
     let rs = req.body.rs;
- 
+
 if(des=="out"){
     rs=rs - (rs * 2);
 }
-
     const pay = {
         from: from,
         to: to,
         amount: rs
     };
-console.log(pay);
 
     User.payment(id, (err, payment) => {
 
         if (payment.payment > rs) {
-            User.incPayment(id, rs, (err, pay) => {
+            User.incPayment(id, rs, (err, paym) => {
 
                 User.updatePayment(id, pay, (err, pay) => {
-});
+
+                    res.send(pay);
+                });
             });
 
         } else {

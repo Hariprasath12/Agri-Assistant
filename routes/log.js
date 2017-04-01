@@ -65,7 +65,7 @@ router.get('/profile', passport.authenticate('log', {session:false}), (req, res,
     id = pro.id;
     User.profile(id, (err, profile) => {
         res.send(profile);
-    }});
+    });
 
 router.post('/profile', passport.authenticate('log', {
     session: false
@@ -79,11 +79,7 @@ router.post('/profile', passport.authenticate('log', {
             phone: req.body.phone,
             cmail:req.body.cmail,
             companyname:req.body.companyname
-
-      
-       
-
-    }
+}
     User.updateprofile(id,prof,(err,profile)=>{
         res.send(profile);
     })
@@ -101,6 +97,7 @@ router.post('/inittrack', passport.authenticate('log', {session:false}), (req, r
    
     price:req.body.price,
     user:req.body.user,
+    ref:req.body.ref,
     to:req.body.to,
     from:req.body.from,
     expecteddate:req.body.date,

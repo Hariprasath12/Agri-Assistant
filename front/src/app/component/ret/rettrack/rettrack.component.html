@@ -1,3 +1,20 @@
-<p>
-  rettrack works!
-</p>
+<div id="logtrack">
+<div class="row">
+<div class="col-md-6">
+<app-rettrackid (add)=ontrack($event)>
+</app-rettrackid>
+</div> 
+<div class="col-md-6"> 
+
+<div *ngIf="wtrack" > 
+<i (click)="close()" class="fa fa-times" aria-hidden="true"></i>
+</div>
+<div *ngIf="wtrack"> 
+<app-rettrackview [trackd]="trackd">
+</app-rettrackview>
+</div>
+
+</div>
+</div> 
+
+</div>

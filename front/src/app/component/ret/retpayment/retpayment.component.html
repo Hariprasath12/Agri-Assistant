@@ -1,3 +1,30 @@
-<p>
-  retpayment works!
-</p>
+<div class="container-fluid" id="payment"> 
+
+<div class="row" id="cash">
+<div class="col-md-4" id="balance"> 
+<div *ngIf="payment">
+<div> 
+<h2>Balance:{{payment| currency:'INR':true}}</h2>
+</div>
+</div>
+
+</div>
+<div class="col-md-6" id="addcash"> 
+
+<app-retaddpayment (add)=onadd($event)>
+</app-retaddpayment>
+
+
+</div>
+ </div>
+
+<div > 
+	<app-retpaymenthis [history]="history" >
+</app-retpaymenthis>
+
+
+
+
+</div>
+</div>
+

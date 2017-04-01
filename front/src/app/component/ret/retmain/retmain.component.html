@@ -1,1 +1,26 @@
+<div id="main"> 
+<div class="row"> 
+<div class="col-md-6">
+<app-retnotify>
+</app-retnotify>
+ </div>
+ <div class="col-md-6">
+
+<div id="balance"> 
+<div *ngIf="payment">
+<div> 
+<h2>Balance:{{payment| currency:'INR':true}}</h2>
+</div>
+</div>
+</div>
+<app-rethistory>
+</app-rethistory>
+
+ </div>
+
+</div>
+
+</div>
+
+
 
