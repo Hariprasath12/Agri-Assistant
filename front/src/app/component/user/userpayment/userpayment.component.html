@@ -4,7 +4,7 @@
 <div class="col-md-4" id="balance"> 
 <div *ngIf="payment">
 <div> 
-<h2>Balance:{{payment| currency:'INR':true}}</h2>
+<h2>Balance:{{payment | currency:'INR':true}}</h2>
 </div>
 </div>
 
@@ -17,12 +17,10 @@
 </div>
  </div>
 
-<div > 
-	<app-paymenthis [history]="history">
+<div id="payment">
+
+<app-paymenthis [history]="history">
 </app-paymenthis>
-
-
-
 
 </div>
 </div>

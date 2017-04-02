@@ -81,6 +81,7 @@ import { ReteditprofileComponent } from './component/ret/reteditprofile/reteditp
 import { RettrackviewComponent } from './component/ret/rettrackview/rettrackview.component';
 import { RettrackidComponent } from './component/ret/rettrackid/rettrackid.component';
 import { RetnotifyComponent } from './component/ret/retnotify/retnotify.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 
 
@@ -352,7 +353,8 @@ path:'',
     ReteditprofileComponent,
     RettrackviewComponent,
     RettrackidComponent,
-    RetnotifyComponent
+    RetnotifyComponent,
+    FooterComponent
 
    
   ],
