@@ -1,0 +1,28 @@
+
+#form{
+	
+  position: relative;
+margin-top: 100px;
+ height: auto;
+	width: 600px;
+
+  border-radius: 3px;
+padding-left: 100px;
+ margin-bottom: 200px;
+ border-radius: 5px;
+
+/*background-color: ;*/
+font-size: 15px;
+}
+
+.form-control{
+	width: 300px;
+   margin-bottom: -1px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 0;
+  background-color: #f7f7f7;
+}
+
+h3{
+  /*color: white;*/
+}
