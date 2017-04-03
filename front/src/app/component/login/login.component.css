@@ -11,6 +11,7 @@
 	 border-radius: 3px;
 	 text-transform: capitalize;
 	 text-align: center;
+	 text-decoration: none;
 }
 .page-header{
 	background-color: #f7f7f7;
@@ -19,5 +20,8 @@
 }
 #login{
 	padding-top: 10px;
+}
+.col-sm-3 a{
+	 text-decoration: none;
 }
 

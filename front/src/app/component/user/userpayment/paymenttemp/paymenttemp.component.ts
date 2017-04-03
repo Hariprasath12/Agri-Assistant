@@ -22,7 +22,8 @@ money:Number;
   	const a={
   		rs:this.money
   	}
-   
+  this.money=""; 
 this.add.emit({rs:a});
+
 }
 }

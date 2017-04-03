@@ -25,7 +25,9 @@ const addpost={
  }
  	this.userCreated.emit({post:addpost});
 
-
+this.title="";
+this.content="";
+this.tag="";
 
 
 

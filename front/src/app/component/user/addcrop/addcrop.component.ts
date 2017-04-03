@@ -19,6 +19,7 @@ crop:String;
   	
    
 this.add.emit({crops:a});
+this.crop="";
 }}
 
 
