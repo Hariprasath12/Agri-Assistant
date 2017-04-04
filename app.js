@@ -28,7 +28,7 @@ const log = require('./routes/log');
 const ret = require('./routes/ret');
 const chat = require('./routes/chat');
 // Port Number
-const port = 3000;
+var port =process.env.PORT || 3000;
 
 // CORS Middleware
 app.use(cors());
