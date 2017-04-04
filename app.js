@@ -8,7 +8,7 @@ const config = require('./config/database');
 const fileUpload = require('express-fileupload');
 
 // Connect To Database
-mongoose.connect(config.database);
+mongoose.connect(process.env.MONGOLAB_URI || config.database);
 
 // On Connection
 mongoose.connection.on('connected', () => {
