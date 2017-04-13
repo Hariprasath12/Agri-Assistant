@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
@@ -372,7 +372,9 @@ path:'',
     BrowserModule,
     FormsModule,
     HttpModule,
-    
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAM2tMK8Kbw07-To_avkltdRLBAVqR4NZk '
+    }),
     
    
     RouterModule.forRoot(appRoutes),
