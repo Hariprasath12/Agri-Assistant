@@ -115,6 +115,10 @@ module.exports.getCrops = function(id, callback) {
     User.findById(id, 'crops', callback);
 }
 
+module.exports.list = function( callback) {
+
+    User.find(callback);
+}
 
 module.exports.updateCrops = function(crops, id, callback) {
 

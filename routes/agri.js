@@ -130,6 +130,19 @@ router.post('/cropdiary', passport.authenticate('agri', {
 
 
 });
+router.get('/list', passport.authenticate('agri', {
+    session: false
+}), (req, res, next) => {
+   
+   
+    far.list((err, post) => {
+        res.json(post);
+    });
+
+
+
+
+});
 
 
 

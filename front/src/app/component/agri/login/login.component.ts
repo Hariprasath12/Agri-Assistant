@@ -34,6 +34,8 @@ password:String;
           cssClass: 'alert-success',
           timeout: 5000});
   		this.router.navigate(['agri/dashboard']);
+      // console.log(user);
+      // console.log(data);
   	}
   	else{
   this.flashMessage.show(data.msg, {

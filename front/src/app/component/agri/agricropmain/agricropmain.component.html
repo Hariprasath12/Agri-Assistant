@@ -1,0 +1,30 @@
+<div *ngIf="farmerid"> 
+ {{farmerid.name}}	
+<div *ngFor="let crop of farmerid.crops"> 
+{{crop.crop}}
+{{crop.date | date | uppercase}}
+</div>
+<div *ngFor="let cropd of farmerid.cropdiary"> 
+{{cropd.des}}
+{{cropd.cropname}}
+{{cropd.date | date | uppercase}}
+</div>
+<div *ngIf="form">
+	<form class="form-inline" (submit)="submitdes()">
+  <div class="form-group">
+    <label for="exampleInputName2"><h3>des</h3></label>
+
+    <input type="text" class="form-control" [(ngModel)]="des" [ngModelOptions]="{standalone: true}" required>
+  </div>
+   <div class="form-group">
+    <label for="exampleInputName2"><h3>Crop name</h3></label>
+
+    <input type="text" class="form-control" [(ngModel)]="cname" [ngModelOptions]="{standalone: true}"  required>
+  </div>
+ 
+  <button type="submit"  class="btn btn-default">Add</button>
+</form>
+</div>
+
+
+</div>

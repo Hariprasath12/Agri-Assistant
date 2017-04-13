@@ -5,8 +5,11 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 const agri = require('../models/agri');
-const fileUpload = require('express-fileupload');
-
+const multer = require('multer');
+var DIR = './uploads/';
+var upload = multer({
+    dest: DIR
+});
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -83,10 +86,10 @@ router.get('/profile', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
 
-     let pro, id;
+    let pro, id;
     pro = req.user;
     id = pro.id;
-    User.profile(id,(err,profile)=>{
+    User.profile(id, (err, profile) => {
         res.send(profile);
     })
 });
@@ -94,20 +97,20 @@ router.post('/profile', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
 
-     let pro, id;
+    let pro, id;
     pro = req.user;
     id = pro.id;
-    const prof={
-            name: req.body.name,
-            address: req.body.address,
+    const prof = {
+        name: req.body.name,
+        address: req.body.address,
         soiltype: req.body.soiltype,
         irr: req.body.irr,
         farm: req.body.farm,
         acres: req.body.acres,
-       
+
 
     }
-    User.updateprofile(id,prof,(err,profile)=>{
+    User.updateprofile(id, prof, (err, profile) => {
         res.send(profile);
     })
 });
@@ -124,10 +127,10 @@ router.get('/posts', passport.authenticate('users', {
 router.get('/favposts', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
- let pro, id;
+    let pro, id;
     pro = req.user;
     id = pro.id;
-    User.getfavpost(id,(err, post) => {
+    User.getfavpost(id, (err, post) => {
 
         res.send(post);
     });
@@ -135,11 +138,11 @@ router.get('/favposts', passport.authenticate('users', {
 router.post('/favpost', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {
- let pro, id;
+    let pro, id;
     pro = req.user;
     id = pro.id;
-let ref=req.body.ref;
-    User.favpost(id,ref,(err, post) => {
+    let ref = req.body.ref;
+    User.favpost(id, ref, (err, post) => {
 
         res.send(post);
     });
@@ -165,19 +168,19 @@ router.post('/addpayment', passport.authenticate('users', {
     let pro, id;
     pro = req.user;
     id = pro.id;
-let rs=req.body.rs;
-const pay = {
-        from:'bank',
+    let rs = req.body.rs;
+    const pay = {
+        from: 'bank',
         to: id,
-        amount:rs
+        amount: rs
     };
     // console.log(pay);
-    User.incPayment(id,rs, (err, payment) => {
-            User.updatePayment(id, pay, (err, payment) => {
+    User.incPayment(id, rs, (err, payment) => {
+        User.updatePayment(id, pay, (err, payment) => {
 
-                    res.send(payment);
-                });
-        
+            res.send(payment);
+        });
+
     });
 });
 
@@ -187,15 +190,15 @@ router.post('/updatepayment', passport.authenticate('users', {
     let pro, id;
     pro = req.user;
     id = pro.id;
-    let des=req.body.des;
-      
+    let des = req.body.des;
+
     let from = req.body.from;
     let to = req.body.to;
     let rs = req.body.rs;
 
-if(des=="out"){
-    rs=rs - (rs * 2);
-}
+    if (des == "out") {
+        rs = rs - (rs * 2);
+    }
     const pay = {
         from: from,
         to: to,
@@ -232,7 +235,7 @@ router.get('/cropdiary', passport.authenticate('users', {
     pro = req.user;
     id = pro.id;
     User.cropdDiary(id, (err, payment) => {
-     res.send(payment);
+        res.send(payment);
     });
 });
 
@@ -316,30 +319,28 @@ router.delete('/deletecrops/:id', passport.authenticate('users', {
 
 });
 
+router.post('/updatecrops', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+
+    var path = '';
+    upload(req, res, function(err) {
+        if (err) {
+            // An error occurred when uploading
+            console.log(err);
+            return res.status(422).send("an Error occured")
+        }
+        path = req.file.path;
+        return res.send("Upload Completed for " + path);
+    });
+
+});
 
 
 
 
 
 
-
-// router.post('/upload', function(req, res) {
-
-
-//   if (!req.files)
-//     return res.status(400).send('No files were uploaded.');
-
-//   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file 
-//   let sampleFile = req.files.sampleFile;
-
-//   // Use the mv() method to place the file somewhere on your server 
-//   sampleFile.mv('/somewhere/on/your/server/filename.jpg', function(err) {
-//     if (err)
-//       return res.status(500).send(err);
-
-//     res.send('File uploaded!');
-//   });
-//   });
 
 
 

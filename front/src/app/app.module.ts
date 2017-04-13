@@ -9,7 +9,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './component/home/home.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from './servies/auth.service';
-
+import { FileSelectDirective } from 'ng2-file-upload';
 import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './component/about/about.component';
 import { agriDashboardComponent } from './component/agri/dashboard/dashboard.component';
@@ -26,7 +26,7 @@ import { userLoginComponent } from './component/user/login/login.component';
 import { userRegisterComponent } from './component/user/register/register.component';
 import { AgriprofileComponent } from './component/agri/agriprofile/agriprofile.component';
 import { LoginComponent } from './component/login/login.component';
-import { FileUploadModule } from 'ng2-file-upload';
+
 import { LogprofileComponent } from './component/log/logprofile/logprofile.component';
 import { RetprofileComponent } from './component/ret/retprofile/retprofile.component';
 import { UserprofileComponent } from './component/user/userprofile/userprofile.component';
@@ -82,6 +82,9 @@ import { RettrackviewComponent } from './component/ret/rettrackview/rettrackview
 import { RettrackidComponent } from './component/ret/rettrackid/rettrackid.component';
 import { RetnotifyComponent } from './component/ret/retnotify/retnotify.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { AgricropComponent } from './component/agri/agricrop/agricrop.component';
+import { AgrifarmerlistComponent } from './component/agri/agrifarmerlist/agrifarmerlist.component';
+import { AgricropmainComponent } from './component/agri/agricropmain/agricropmain.component';
 
 
 
@@ -177,6 +180,10 @@ component: AgripostComponent
 {
 path:'review',
    component: AgrireviewComponent
+},
+{
+path:'crop',
+   component: AgricropComponent
 }
 ]
 }
@@ -285,7 +292,7 @@ path:'',
     HomeComponent,
     
     AboutComponent,
-  
+  FileSelectDirective,
     userDashboardComponent,
     userLoginComponent,
     userRegisterComponent,
@@ -354,7 +361,10 @@ path:'',
     RettrackviewComponent,
     RettrackidComponent,
     RetnotifyComponent,
-    FooterComponent
+    FooterComponent,
+    AgricropComponent,
+    AgrifarmerlistComponent,
+    AgricropmainComponent
 
    
   ],
@@ -362,7 +372,8 @@ path:'',
     BrowserModule,
     FormsModule,
     HttpModule,
-    FileUploadModule,
+    
+    
    
     RouterModule.forRoot(appRoutes),
      FlashMessagesModule

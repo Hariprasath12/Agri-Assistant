@@ -4,7 +4,9 @@
 <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/profile']">Profile</a></li>	
  <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/chat']">Chat</a></li>
 <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/post']">Post</a></li>
+ <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/crop']">Crop</a></li>
  <li  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/agri/dashboard/review']">Review</a></li>
+
 <span  *ngIf="user">
 <li>{{user.name}}</li>
 </span>

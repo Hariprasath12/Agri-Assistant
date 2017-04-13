@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../../servies/auth.service';
-import { FileUploader } from 'ng2-file-upload';
+
 import {Http, Headers,URLSearchParams,RequestOptions} from '@angular/http';
 
-import{Router} from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
-import 'rxjs/add/operator/map';
+import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
+//define the constant url we would be uploading to.
+const URL = 'http://localhost:8000/api/upload';
 
 
 @Component({
@@ -13,45 +13,25 @@ import 'rxjs/add/operator/map';
   templateUrl: './userproduct.component.html',
   styleUrls: ['./userproduct.component.css']
 })
+
 export class UserproductComponent implements OnInit {
 
-apiEndPoint:any="http://localhost:3000/users/upload";
+public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+    //This is the default title property created by the angular cli. Its responsible for the app works 
+    title = 'app works!';
 constructor(private http:Http) {
    
   }
 
   ngOnInit() {
-  }
-  //  public uploader:FileUploader = new FileUploader({url: "http://localhost:3000/users/upload"});
-  // public hasBaseDropZoneOver:boolean = false;
-  // public hasAnotherDropZoneOver:boolean = false;
- 
-  // public fileOverBase(e:any):void {
-  //   this.hasBaseDropZoneOver = e;
-  // }
- 
-  // public fileOverAnother(e:any):void {
-  //   this.hasAnotherDropZoneOver = e;
-  // }
+     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
+       
+       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+            console.log("ImageUpload:uploaded:", item, status, response);
+        };
 
-  fileChange(event) {
-    let fileList: FileList = event.target.files;
-    if(fileList.length > 0) {
-        let file: File = fileList[0];
-        let formData:FormData = new FormData();
-        formData.append('uploadFile', file, file.name);
-        let headers = new Headers();
-        headers.append('Content-Type', 'multipart/form-data');
-        headers.append('Accept', 'application/json');
-        let options = new RequestOptions({ headers: headers });
-        this.http.post(`${this.apiEndPoint}`, formData, options)
-            .map(res => res.json())
-            
-            .subscribe(
-                data => console.log('success'),
-                error => console.log(fileList)
-            )
-    }
-}
+  }
+ 
+
 
 }

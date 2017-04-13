@@ -32,6 +32,9 @@ address:String;
   
 this.add.emit({loc:data});
 
+this.loc="";
+this.email="";
+this.address="";
 
   }
 

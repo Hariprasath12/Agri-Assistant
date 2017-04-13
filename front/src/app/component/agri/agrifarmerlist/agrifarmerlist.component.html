@@ -1,0 +1,17 @@
+<div *ngIf="farmer"> 
+<div *ngFor="let f of farmer"> 
+<div (click)="target(f)">
+{{f.name}}	
+</div>
+
+<!-- <div *ngFor="let crop of f.crops"> 
+{{crop.crop}}
+{{crop.date | date | uppercase}}
+</div>
+<div *ngFor="let cropd of f.cropdiary"> 
+{{cropd.des}}
+{{cropd.date | date | uppercase}}
+</div> -->
+</div>
+
+</div>

@@ -14,6 +14,7 @@ like:Boolean=false;
   	private router:Router) { }
 
   ngOnInit() {
+  
 this.authService.getAllPosts().subscribe(post=>{
     // console.log(post[0].post);
       this.posts=post[0].post;

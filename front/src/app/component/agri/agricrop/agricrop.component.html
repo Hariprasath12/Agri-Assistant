@@ -1,0 +1,7 @@
+
+<app-agrifarmerlist (clickfarmer)=onclickfarmer($event)>
+</app-agrifarmerlist>
+<div *ngIf="farmermain" >
+	<app-agricropmain [farmerid]="farmerid">
+</app-agricropmain>
+</div>

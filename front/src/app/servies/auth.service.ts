@@ -98,6 +98,16 @@ cropdiary(){
       .map(res => res.json());
 
 }
+updatecropdiary(data){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/agri/cropdiary',data,{headers: headers})
+      .map(res => res.json());
+
+}
+
 updateuserprofile(data){
   let headers = new Headers();
     this.loadToken();
@@ -226,6 +236,15 @@ logpayment(){
     headers.append('Content-Type','application/json');
     return this.http.get('http://localhost:3000/log/payment',{headers: headers})
       .map(res => res.json());
+  }
+  list(){
+     let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/agri/list',{headers: headers})
+      .map(res => res.json());
+
   }
 
  userpaymenthis(){
