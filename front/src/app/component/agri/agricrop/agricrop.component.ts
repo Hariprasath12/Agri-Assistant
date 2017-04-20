@@ -19,6 +19,9 @@ farmerid:any;
 
   	
   }
+  close(){
+  	this.farmermain=false;
+  }
  onclickfarmer(event){
 
 this.farmerid=event.data;

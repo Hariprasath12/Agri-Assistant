@@ -9,6 +9,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './component/home/home.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from './servies/auth.service';
+import { ChatService} from './servies/chat.service';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './component/about/about.component';
@@ -382,7 +383,7 @@ path:'',
    
 
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService,AuthGuard, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

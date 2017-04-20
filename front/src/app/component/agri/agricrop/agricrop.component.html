@@ -1,7 +1,31 @@
 
-<app-agrifarmerlist (clickfarmer)=onclickfarmer($event)>
-</app-agrifarmerlist>
-<div *ngIf="farmermain" >
+<div>
+
+<div class="row" >
+<div class="col-md-6">
+ 	<app-agrifarmerlist (clickfarmer)=onclickfarmer($event)>
+</app-agrifarmerlist>	
+ 	</div> 	
+	<div class="col-md-6">
+	 		<div *ngIf="farmermain" >
+
+<h2 class="btn-primary" id="close" (click)="close()" >X</h2>
+	
+
 	<app-agricropmain [farmerid]="farmerid">
 </app-agricropmain>
 </div>
+	 	</div> 	
+</div> 
+	
+</div> 
+
+
+
+
+
+
+
+
+
+
