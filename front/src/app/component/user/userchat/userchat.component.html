@@ -16,12 +16,12 @@
   <button type="submit" class="btn btn-default" (click)="sendMessage()" >Send </button>
 </form>
 </div>
-<!-- <div *ngFor="let list of listuser"> 
-<div *ngFor="let l of list"> 
-
-           {{l.name}} 
-           </div>       
-                   </div> -->
+<div *ngFor="let list of listuser"> 
+<!-- {{list.list}} -->
+<div *ngFor="let l of list.list"> 
+<img src="https://support.scruff.com/hc/en-us/article_attachments/210203608/status_online_01.svg" class="img-responsive" alt="Image" width=20px;>{{l.name}}    
+                   </div>  
+                   </div>
 
 
               
