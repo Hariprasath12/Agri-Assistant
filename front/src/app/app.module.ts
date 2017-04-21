@@ -86,6 +86,9 @@ import { FooterComponent } from './component/footer/footer.component';
 import { AgricropComponent } from './component/agri/agricrop/agricrop.component';
 import { AgrifarmerlistComponent } from './component/agri/agrifarmerlist/agrifarmerlist.component';
 import { AgricropmainComponent } from './component/agri/agricropmain/agricropmain.component';
+import { RetlocationComponent } from './component/ret/retlocation/retlocation.component';
+import { UserlocationComponent } from './component/user/userlocation/userlocation.component';
+import { LoglocationComponent } from './component/log/loglocation/loglocation.component';
 
 
 
@@ -365,7 +368,10 @@ path:'',
     FooterComponent,
     AgricropComponent,
     AgrifarmerlistComponent,
-    AgricropmainComponent
+    AgricropmainComponent,
+    RetlocationComponent,
+    UserlocationComponent,
+    LoglocationComponent
 
    
   ],

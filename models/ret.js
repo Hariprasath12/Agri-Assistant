@@ -25,6 +25,9 @@ const UserSchema = mongoose.Schema({
         required: true
 
     },
+    loc:[
+    {lat:Number,
+        lon:Number}],
     companyname: String,
     companytype: String,
     img: String,
@@ -124,6 +127,30 @@ module.exports.product = function(callback) {
 
     }, 'product', callback);
 }
+module.exports.getlocation = function(id,callback) {
+
+    User.find({
+ _id: id
+    },'loc',callback);
+}
+module.exports.updatelocation = function(id,loc,callback) {
+    // console.log(loc);
+ const con = {
+        _id: id
+    };
+    const sub = {
+        $push: {
+            "loc": loc
+
+        }
+    };
+    const options = {
+        multi: false
+    };
+    User.update(con, sub, options, callback);
+   
+}
+
 
 
 

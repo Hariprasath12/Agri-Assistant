@@ -115,6 +115,40 @@ router.post('/profile', passport.authenticate('users', {
     })
 });
 
+router.post('/location', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+let loc={
+    lat:req.body.lat,
+    lon:req.body.lon
+};
+
+console.log(loc);
+User.updatelocation(id, loc, (err, p) => {
+
+                    res.send(p);
+                });
+
+});
+
+router.get('/location', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+
+    User.getlocation(id,(err, payment) => {
+res.send(payment);
+    });
+});
+
+
+
+
 router.get('/posts', passport.authenticate('users', {
     session: false
 }), (req, res, next) => {

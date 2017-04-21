@@ -78,10 +78,9 @@ type: String
         }
 
     }],
-    loc: {
-        type: [Number],
-        index: '2d'
-    },
+    loc:[
+    {lat:Number,
+        lon:Number}],
     img: String,
     reg_date: {
         type: Date,
@@ -133,6 +132,32 @@ module.exports.updateCrops = function(crops, id, callback) {
         }
     }, callback);
 }
+
+module.exports.getlocation = function(id,callback) {
+
+    User.find({
+ _id: id
+    },'loc',callback);
+}
+module.exports.updatelocation = function(id,loc,callback) {
+    // console.log(loc);
+ const con = {
+        _id: id
+    };
+    const sub = {
+        $push: {
+            "loc": loc
+
+        }
+    };
+    const options = {
+        multi: false
+    };
+    User.update(con, sub, options, callback);
+   
+}
+
+
 
 module.exports.updateCropdiary = function(id,crop, callback) {
 const con={_id:id};

@@ -32,7 +32,7 @@ list;
         this.authService.getProfile().subscribe(profile=>{
 
 
-// this.user=profile[0].name;
+this.user=profile[0].name;
 
 
   },

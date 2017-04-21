@@ -152,6 +152,44 @@ updateretprofile(data){
     return this.http.get('http://localhost:3000/ret/profile',{headers: headers})
       .map(res => res.json());
   }
+   getlocationuser(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/location',{headers: headers})
+      .map(res => res.json());
+  }
+   getlocationret(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/ret/location',{headers: headers})
+      .map(res => res.json());
+  }
+
+  updatelocret(a){
+   let headers = new Headers();
+    this.loadToken();
+
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/location',a,{headers: headers})
+      .map(res => res.json());
+
+}
+ updatelocusers(a){
+   let headers = new Headers();
+    this.loadToken();
+
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/location',a,{headers: headers})
+      .map(res => res.json());
+
+}
+  
 
 getcrops(){
    let headers = new Headers();
