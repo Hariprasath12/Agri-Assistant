@@ -3,5 +3,10 @@
 
 }
 .form-control{
-	width: 400px;
+	width: 600px;
+}
+.form-group{
+	position: fixed;
+	bottom: 0px;
+	
 }

@@ -89,6 +89,7 @@ import { AgricropmainComponent } from './component/agri/agricropmain/agricropmai
 import { RetlocationComponent } from './component/ret/retlocation/retlocation.component';
 import { UserlocationComponent } from './component/user/userlocation/userlocation.component';
 import { LoglocationComponent } from './component/log/loglocation/loglocation.component';
+import { UserchatlistComponent } from './component/user/userchatlist/userchatlist.component';
 
 
 
@@ -371,7 +372,8 @@ path:'',
     AgricropmainComponent,
     RetlocationComponent,
     UserlocationComponent,
-    LoglocationComponent
+    LoglocationComponent,
+    UserchatlistComponent
 
    
   ],

@@ -1,12 +1,12 @@
-
-<div>
+<div id="crop">
 
 <div class="row" >
-<div class="col-md-6">
+<div class="col-md-4">
+<p> List of Farmers:</p>
  	<app-agrifarmerlist (clickfarmer)=onclickfarmer($event)>
 </app-agrifarmerlist>	
  	</div> 	
-	<div class="col-md-6">
+	<div class="col-md-8">
 	 		<div *ngIf="farmermain" >
 
 <h2 class="btn-primary" id="close" (click)="close()" >X</h2>

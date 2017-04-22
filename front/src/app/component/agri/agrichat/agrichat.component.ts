@@ -20,14 +20,9 @@ room="hjk";
 listuser=[];
 list;
  constructor(private chatService:ChatService,private authService:AuthService) {
-  
- 
-  }
-
-  
-   
- ngOnInit() {
-        this.authService.getProfile().subscribe(profile=>{
+}
+ngOnInit() {
+        this.authService.getProfileagri().subscribe(profile=>{
 
 
 this.user=profile[0].name;
@@ -44,7 +39,7 @@ this.user=profile[0].name;
 
 this.connection=this.chatService.getuser().subscribe(message => { 
     this.listuser.push(message);
-    // console.log(this.listuser);
+    console.log(message);
      }) 
  
    this.connection = this.chatService.getMessages().subscribe(message => { 

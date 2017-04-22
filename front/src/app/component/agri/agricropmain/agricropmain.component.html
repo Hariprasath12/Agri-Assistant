@@ -1,18 +1,46 @@
-<div *ngIf="farmerid"> 
- {{farmerid.name}}	
-<div *ngFor="let crop of farmerid.crops"> 
-{{crop.crop}}
-{{crop.date | date | uppercase}}
-</div>
+<div id="main">
+<div *ngIf="farmerid">
+<div class="row">
+  <div class="col-md-8">
+   <div class="page-header">
+  {{farmerid.name}}
+</div>  
+<div >
+  <ul class="list-group">
+
 <div *ngFor="let cropd of farmerid.cropdiary"> 
-{{cropd.des}}
+<li class="list-group-item">
+<h4> {{cropd.des}}</h4>
+
 {{cropd.cropname}}
-{{cropd.date | date | uppercase}}
+<span> 
+{{cropd.date | date | uppercase}}</span>
+</li>
 </div>
+</ul>
+</div>
+  </div>
+  <div class="col-md-4">
+  Crop List:
+  <ul class="list-group">
+    <div *ngFor="let crop of farmerid.crops"> 
+    <li class="list-group-item">
+{{crop.crop}}
+<span> {{crop.date | date | uppercase}}</span>
+
+</li>
+</div>
+
+</ul>
+  </div>
+</div>
+<div id="form">
+  
+
 <div *ngIf="form">
-	<form class="form-inline" (submit)="submitdes()">
+  <form class="form-inline" (submit)="submitdes()">
   <div class="form-group">
-    <label for="exampleInputName2"><h3>des</h3></label>
+    <label for="exampleInputName2"><h3>Des</h3></label>
 
     <input type="text" class="form-control" [(ngModel)]="des" [ngModelOptions]="{standalone: true}" required>
   </div>
@@ -25,6 +53,16 @@
   <button type="submit"  class="btn btn-default">Add</button>
 </form>
 </div>
-
+</div>
+</div>
 
 </div>
+
+
+
+
+
+ 
+
+
+
