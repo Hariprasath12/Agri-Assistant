@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../../servies/auth.service';
-
 import {Http, Headers,URLSearchParams,RequestOptions} from '@angular/http';
-
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 //define the constant url we would be uploading to.
-const URL = 'http://localhost:8000/api/upload';
+const URL = 'http://localhost:3000/users/updatecrops';
 
 
 @Component({
