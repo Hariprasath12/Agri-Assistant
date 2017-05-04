@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import {AuthService} from '../../../servies/auth.service';
 import {Http, Headers,URLSearchParams,RequestOptions} from '@angular/http';
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
-//define the constant url we would be uploading to.
-const URL = 'http://localhost:3000/users/updatecrops';
+import { Response } from '@angular/http';
+import "rxjs/add/operator/do";
+
+import "rxjs/add/operator/map";
+const URL = 'http://localhost:3000/users/product';
+
 
 
 @Component({
@@ -15,21 +19,38 @@ const URL = 'http://localhost:3000/users/updatecrops';
 export class UserproductComponent implements OnInit {
 
 public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
-    //This is the default title property created by the angular cli. Its responsible for the app works 
-    title = 'app works!';
-constructor(private http:Http) {
-   
-  }
+
 
   ngOnInit() {
-     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
-       
-       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+   this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false;  };
+   this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
             console.log("ImageUpload:uploaded:", item, status, response);
+            alert(response);
         };
-
   }
- 
 
+  constructor(private http: Http, private el: ElementRef) {
+  
+  }
+//   upload() {
+//         let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
+//         console.log("iam+ "+inputEl);
+//         let fileCount: number = inputEl.files.length;
+//         let formData = new FormData();
+//         if (fileCount > 0) { // a file was selected
+//             for (let i = 0; i < fileCount; i++) {
+//                 formData.append('photo', inputEl.files.item(i));
+//             }
+//             console.log(formData);
+//             this.http
+//                 .post(URL, formData).map((res:any) => res).subscribe(
+//                     (success) => {
+//                      alert(success._body);
+//                   },
+//                     (error) => alert(error)
+//                 );
+               
+//         }
+// }
 
 }

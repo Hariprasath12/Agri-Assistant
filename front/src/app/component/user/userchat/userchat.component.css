@@ -1,12 +1,18 @@
 #chat{
 	padding-top: 30px;
+	margin-bottom: 300px;
 
 }
 .form-control{
 	width: 600px;
 }
-.form-group{
+form{
 	position: fixed;
 	bottom: 0px;
+	
+}
+#msg{
+	position: fixed;
+	height: 200px;
 	
 }

@@ -6,11 +6,10 @@ const config = require('../config/database');
 const User = require('../models/user');
 const agri = require('../models/agri');
 const multer = require('multer');
+// set the directory for the uploads to the uploaded to
 var DIR = './uploads/';
-var upload = multer({
-    dest: DIR
-});
-
+//define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
+var upload = multer({dest: DIR}).single('photo');
 // Register
 router.post('/register', (req, res, next) => {
     let newUser = new User({
@@ -353,29 +352,63 @@ router.delete('/deletecrops/:id', passport.authenticate('users', {
 
 });
 
-router.post('/updatecrops', passport.authenticate('users', {
-    session: false
-}), (req, res, next) => {
 
-    var path = '';
-    upload(req, res, function(err) {
+
+
+// router.post('/product',upload.single('photo'), function (req, res, next) {
+//      var path = '';
+//      upload(req, res, function (err) {
+//         if (err) {
+//           // An error occurred when uploading
+//           console.log(err);
+//           return res.status(422).send("an Error occured")
+//         }  
+//         // console.log(req);
+//        // No error occured.
+//        console.log(req.file.path);
+//         path = req.file.path;
+//         return res.send("Upload Completed for "+path); 
+//   });     
+//   console.log(req);
+//   return res.send("Upload Completed for"); 
+// })
+
+// router.post('/product', function(req, res) {
+
+//         upload(req,res,function(err){
+
+//             console.log(req.file);
+
+//             if(err){
+
+//                  res.json({error_code:1,err_desc:err});
+
+//                  return;
+
+//             }
+
+//              res.json({error_code:0,err_desc:null});
+
+//         });
+
+//     });
+router.post('/product', function (req, res, next) {
+     var path = '';
+     upload(req, res, function (err) {
         if (err) {
-            // An error occurred when uploading
-            console.log(err);
-            return res.status(422).send("an Error occured")
-        }
+          // An error occurred when uploading
+          console.log(err);
+          return res.status(422).send("an Error occured")
+        }  
+       // No error occured.
         path = req.file.path;
-        return res.send("Upload Completed for " + path);
-    });
-
-});
-
+        return res.send("Upload Completed for "+path); 
+  });     
+})
 
 
 
 
 
 
-
-
-module.exports = router;
+module.exports = router; 

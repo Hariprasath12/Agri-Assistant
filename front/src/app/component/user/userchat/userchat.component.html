@@ -1,10 +1,63 @@
 
+<div class="container" id="chat">
+   
+    <div class="row" >
+
+        <div class="conversation-wrap col-lg-3">
+        <div *ngFor="let list of listuser"> 
+
+<div *ngFor="let l of list.list"> 
+<img src="https://support.scruff.com/hc/en-us/article_attachments/210203608/status_online_01.svg" class="img-responsive" alt="Image" width=20px;>{{l.name}}    
+                   </div>  
+                   </div>
+        </div>
 
 
-<div id="chat">
+
+        <div class="message-wrap col-lg-8" >
+            <div class="msg-wrap">
+
+
+                <div class="media msg "*ngFor="let message of messages">
+                  
+                    <div class="media-body">
+                        <small class="pull-right time"><i class="fa fa-clock-o"></i> {{message.timestamp | date | uppercase}}</small>
+                        <h5 class="media-heading">{{message.name}}</h5>
+                        <small class="col-lg-10">{{message.text}}</small>
+                    </div>
+                </div>
+               
+               
+
+            </div>
+
+        <form class="form-inline">
+  
+ 
+  
+            <div class="send-wrap ">
+
+             <div class="form-group">
+    
+    <input type="text" class="form-control" id="exampleInputName2" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" placeholder="Message">
+<button type="submit" class="btn btn-default" (click)="sendMessage()" >Send </button>
+
+  </div>  
+
+            </div>
+           
+                
+
+          
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <div id="chat">
 <div class="row">
 <div class="col-md-9">
-<div *ngFor="let message of messages"> 
+<div *ngFor="let message of messages" id="msg"> 
 {{message.name}}
                      {{message.text}}
                     
@@ -23,16 +76,11 @@
 
 <div class="col-md-3">
   
-<div *ngFor="let list of listuser"> 
-<!-- {{list.list}} -->
-<div *ngFor="let l of list.list"> 
-<img src="https://support.scruff.com/hc/en-us/article_attachments/210203608/status_online_01.svg" class="img-responsive" alt="Image" width=20px;>{{l.name}}    
-                   </div>  
-                   </div>
+
 </div>
   
 </div>
-</div>
+</div> --> 
   
 
 

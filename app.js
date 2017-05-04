@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 const fileUpload = require('express-fileupload');
 
+
 // Connect To Database
 mongoose.connect(process.env.MONGOLAB_URI || config.database);
 
@@ -47,6 +48,12 @@ app.use(passport.session());
       res.header("Access-Control-Allow-Headers", "localhost:4200/user/dashboard/chat");
       next();
     });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 require('./config/passport')(passport);
 app.use('/chat', chat);
