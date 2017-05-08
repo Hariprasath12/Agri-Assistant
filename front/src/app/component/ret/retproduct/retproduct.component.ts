@@ -11,6 +11,7 @@ export class RetproductComponent implements OnInit {
  lat: number ;
   lng: number;
   zoom:Number=15;
+  map:boolean=false;
   constructor(private authService:AuthService) { }
 
   

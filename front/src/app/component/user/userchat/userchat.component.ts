@@ -46,7 +46,7 @@ this.user=profile[0].name;
 
 this.connection=this.chatService.getuser().subscribe(message => { 
     this.listuser.push(message);
-    // console.log(this.listuser);
+    console.log(this.listuser);
      }) 
  
    this.connection = this.chatService.getMessages().subscribe(message => { 

@@ -90,6 +90,7 @@ import { RetlocationComponent } from './component/ret/retlocation/retlocation.co
 import { UserlocationComponent } from './component/user/userlocation/userlocation.component';
 import { LoglocationComponent } from './component/log/loglocation/loglocation.component';
 import { UserchatlistComponent } from './component/user/userchatlist/userchatlist.component';
+import { ProductlistComponent } from './component/user/productlist/productlist.component';
 
 
 
@@ -373,7 +374,8 @@ path:'',
     RetlocationComponent,
     UserlocationComponent,
     LoglocationComponent,
-    UserchatlistComponent
+    UserchatlistComponent,
+    ProductlistComponent
 
    
   ],

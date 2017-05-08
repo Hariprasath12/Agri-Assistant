@@ -1,13 +1,76 @@
-<h1>
-<!-- here we echo the title from the component -->
-  {{title}}
-</h1>
+<div id="product">
+	<div *ngIf="form">
+		
 
-<!-- File input for the file-upload plugin, with special ng2-file-upload directive called ng2FileSelect -->
-<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
-<!-- button to trigger the file upload when submitted -->
+<div class="page-header">
+  <h1>Product Upload</h1>
+</div>
+
+<form class="form-horizontal"  (submit)="onProductSubmit()" >
+ 
+  <div class="form-group">
+
+   <div class="form-group">
+    <label>Name</label>
+    <input type="text" [(ngModel)]="name" name="name" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Quality</label>
+    <input type="number" [(ngModel)]="qua" name="qua" class="form-control" required>
+  </div>
+   <div class="form-group">
+    <label>Description</label>
+    <input type="text" [(ngModel)]="des" name="des" class="form-control" required>
+  </div>
+<div class="form-group">
+    <div class="col-sm-10">
+     <button type="submit" class="btn btn-success btn-s">Submit</button>
+     </div>
+     </div>
+
+
+
+  
+
+ 
+ 
+
+  </div>
+</form>
+	</div>
+
+<div *ngIf="img">
+	 <div class="form-group">
+    <label>File Uploader</label>
+    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" multiple />
+  </div>
+ 
+
+  <div class="form-group">
+    <div class="col-sm-10">
+     <button type="submit" class="btn btn-success btn-s"
+    (click)="uploader.uploadAll()" 
+    [disabled]="!uploader.getNotUploadedItems().length">
+    Submit
+</button>
+    </div>
+</div>
+
+
+
+</div>
+<div *ngIf="form">
+ <app-productlist>
+</app-productlist> 
+</div>
+
+
+
+<!-- <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+
 <button type="button" class="btn btn-success btn-s"
       (click)="uploader.uploadAll()" 
       [disabled]="!uploader.getNotUploadedItems().length">
-      Upload with ng-2 file uploader
-</button>
+      Upload
+</button> -->

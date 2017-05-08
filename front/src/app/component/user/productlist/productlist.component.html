@@ -1,0 +1,15 @@
+<div *ngIf="product">
+	<div *ngFor="let i of product">
+		{{i.name}}
+		{{i.quantity}}
+		{{i.des}}
+		{{i.date}}
+		<div *ngFor="let img of i.img">
+			
+		<img src="../../{{img}}" alt="hello">
+		</div>
+	</div>
+</div> 
+<div *ngIf="!product">
+No Product 
+</div>

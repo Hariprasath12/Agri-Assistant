@@ -6,6 +6,7 @@ const config = require('../config/database');
 const User = require('../models/user');
 const agri = require('../models/agri');
 const multer = require('multer');
+var proid="";
 // set the directory for the uploads to the uploaded to
 var DIR = './uploads/';
 //define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
@@ -351,48 +352,32 @@ router.delete('/deletecrops/:id', passport.authenticate('users', {
     });
 
 });
+router.post('/productinit', passport.authenticate('users', {
+    session: false
+}),   (req, res, next)=> {
+     let pro, id;
+    pro = req.user;
+    id = pro.id;
+    const prd={
+        name:req.body.name,
+         quantity:req.body.qua,
+          des:req.body.des
+    };
+    User.initproduct(prd,id,(err,numy)=>{
+       User.productbyid(id,(err,num)=>{
+        let products=num[0].product;
+     let size=products.length;
+     let id=products[size-1]._id;
+     proid= id;
+     res.send(num);
+        // console.log(id);
+       })
+    })
+      
+     
+});
 
-
-
-
-// router.post('/product',upload.single('photo'), function (req, res, next) {
-//      var path = '';
-//      upload(req, res, function (err) {
-//         if (err) {
-//           // An error occurred when uploading
-//           console.log(err);
-//           return res.status(422).send("an Error occured")
-//         }  
-//         // console.log(req);
-//        // No error occured.
-//        console.log(req.file.path);
-//         path = req.file.path;
-//         return res.send("Upload Completed for "+path); 
-//   });     
-//   console.log(req);
-//   return res.send("Upload Completed for"); 
-// })
-
-// router.post('/product', function(req, res) {
-
-//         upload(req,res,function(err){
-
-//             console.log(req.file);
-
-//             if(err){
-
-//                  res.json({error_code:1,err_desc:err});
-
-//                  return;
-
-//             }
-
-//              res.json({error_code:0,err_desc:null});
-
-//         });
-
-//     });
-router.post('/product', function (req, res, next) {
+router.post('/product', (req, res, next) =>{
      var path = '';
      upload(req, res, function (err) {
         if (err) {
@@ -400,13 +385,27 @@ router.post('/product', function (req, res, next) {
           console.log(err);
           return res.status(422).send("an Error occured")
         }  
+        console.log(proid);
        // No error occured.
         path = req.file.path;
-        return res.send("Upload Completed for "+path); 
+        User.updateimg(path,proid,(err,num)=>{
+res.send(num);
+        })
+        
   });     
-})
+});
 
+router.get('/productlist', passport.authenticate('users', {
+    session: false
+}), (req, res, next) => {
+    let pro, id;
+    pro = req.user;
+    id = pro.id;
+    User.productlist(id,(err, crops) => {
 
+        res.send(crops);
+    });
+});
 
 
 

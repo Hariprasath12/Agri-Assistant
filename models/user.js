@@ -56,13 +56,21 @@ type: String
         id: String,
         name: String,
         quantity: String,
-        Active: Boolean,
+        Active:{
+            type: Boolean,
+            default: Date.now
+        },
+        des:String,
         track:{
         type: String,
         default: null
     },
+
         img: [],
-        date: Date,
+        date:  {
+            type: Date,
+            default: Date.now
+        }
 
 
     }],
@@ -249,6 +257,12 @@ module.exports.product = function(callback) {
        
     },'product', callback);
 }
+module.exports.productlist = function(id,callback) {
+
+    User.find({_id:id
+       
+    },'product', callback);
+}
 
 module.exports.profile = function(id,callback) {
 
@@ -296,6 +310,42 @@ module.exports.updatePayment = function(id, det, callback) {
 
     User.update(con, sub, options, callback);
 
+}
+module.exports.initproduct = function(info, id, callback) {
+
+
+    User.update({
+        _id: id
+    }, {
+        $push: {
+            "product": info
+        }
+    },callback);
+    
+
+
+}
+module.exports.updateimg = function(img, id, callback) {
+
+
+    User.update({
+        product:{ $elemMatch:{_id:id}}
+    }, {
+        $push: {
+            "product.$.img": img
+        }
+    },callback);
+    // console.log(id);
+    // User.find({
+    //     product:{ $elemMatch:{_id:id}}
+    // },callback);
+    }
+
+
+
+
+module.exports.productbyid = function( id, callback) {
+    User.find({_id:id},'product',callback);
 }
 
 
