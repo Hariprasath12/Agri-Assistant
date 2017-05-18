@@ -211,6 +211,26 @@ addcrops(a){
       .map(res => res.json());
 
 }
+updatesell(a){
+   let headers = new Headers();
+    this.loadToken();
+
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/sell',a,{headers: headers})
+      .map(res => res.json());
+
+}
+prohis(a){
+   let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/prohis',a,{headers: headers})
+      .map(res => res.json());
+
+}
+
 
 deletecrops(id){
    let headers = new Headers();
@@ -284,6 +304,17 @@ logpayment(){
       .map(res => res.json());
 
   }
+prolistid(id){
+     let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/ret/productid/'+id,{headers: headers})
+      .map(res => res.json());
+
+  }
+
+
 
  userpaymenthis(){
 
@@ -371,7 +402,7 @@ inittrack(data){
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/log/inittrack',data,{headers: headers})
+    return this.http.post('http://localhost:3000/ret/inittrack',data,{headers: headers})
       .map(res => res.json());
 
 }
@@ -385,6 +416,14 @@ trackbyid(id){
       .map(res => res.json());
 
 
+}
+product(){
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/ret/product',{headers: headers})
+      .map(res => res.json());
 }
 
 trackbyref(id){
@@ -444,6 +483,15 @@ productlist()
     return this.http.get('http://localhost:3000/users/productlist',{headers: headers})
       .map(res => res.json());
 
+}
+retproduct(data){
+  console.log(data);
+  let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/ret/updatepayment',data,{headers: headers})
+      .map(res => res.json());
 }
 
 

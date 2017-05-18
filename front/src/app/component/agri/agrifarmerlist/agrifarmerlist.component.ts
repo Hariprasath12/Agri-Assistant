@@ -16,7 +16,7 @@ farmer:any;
   ngOnInit() {
 
    this.authService.list().subscribe(data=>{
-
+console.log(data);
 this.farmer=data;
 
   }); 

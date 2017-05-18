@@ -115,6 +115,18 @@ router.get('/product', passport.authenticate('ret', {
 
 
 });
+router.get('/productid/:id', passport.authenticate('ret', {
+    session: false
+}), (req, res, next) => {
+        let id=req.params.id;
+        console.log(id);
+
+    far.productid(id,(err, post) => {
+        res.json(post);
+    });
+
+
+});
 
 
 router.get('/trackbyid/:id', passport.authenticate('ret', {session:false}), (req, res, next) => {
@@ -131,12 +143,49 @@ res.send(post);
 });
 
 
+router.post('/sell', passport.authenticate('ret', {
+    session:false}), (req, res, next) => {
+  
+let id= req.body.id;
+console.log(id);
+
+far.productsell(id,(err,up)=>{
+// console.log(up);
+res.send(up);
+});
+
+});
+
+
+router.post('/prohis', passport.authenticate('ret', {
+    session:false}), (req, res, next) => {
+  let pro, id;
+    pro = req.user;
+    id = pro.id;
+let ref= req.body.id;
+let to=pro.name;
+
+const prohis={
+    ref:ref,
+    to:to
+}
+console.log(prohis);
+
+far.prohis(prohis,ref,(err,up)=>{
+// console.log(up);
+res.send(up);
+});
+
+});
+
+
 router.get('/paymenthistory', passport.authenticate('ret', {
     session: false
 }), (req, res, next) => {
     let pro, id;
     pro = req.user;
     id = pro.id;
+    
     User.paymentHis(id, (err, payment) => {
 
         res.send(payment);
@@ -197,6 +246,7 @@ User.updatelocation(id, loc, (err, p) => {
 
 });
 
+
 router.get('/location', passport.authenticate('ret', {
     session: false
 }), (req, res, next) => {
@@ -223,6 +273,7 @@ router.post('/updatepayment', passport.authenticate('ret', {
 if(des=="out"){
     rs=rs - (rs * 2);
 }
+console.log(rs);
     const pay = {
         from: from,
         to: to,
@@ -248,6 +299,42 @@ if(des=="out"){
 
 
 });
+
+
+
+
+
+router.post('/inittrack', passport.authenticate('ret', {session:false}), (req, res, next) => {
+   let pro, id;
+    pro = req.user;
+    id = pro.id;
+const user={
+    name:pro.name,
+    phone:pro.phone,
+    email:pro.email
+}
+console.log(user);
+  var track={
+   
+    price:req.body.price,
+    user:user,
+    ref:id,
+    to:pro.address,
+    from:req.body.from,
+    expecteddate:req.body.date,
+}
+lid="5911f575f9b80a1908485c0a";
+
+log.inittrack(track,lid,(err,post)=>{
+   if(err) throw err;
+res.send(post);
+});
+});
+
+
+
+
+
 
 
 

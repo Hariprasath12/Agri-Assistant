@@ -25,6 +25,7 @@ des:String;
 id:String;
 img:Boolean=false;
 form:Boolean=true;
+amt:Number;
 public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
 
 
@@ -52,7 +53,8 @@ onProductSubmit(){
   const user={
     name:this.name,
     qua:this.qua,
-    des:this.des
+    des:this.des,
+    rs:this.amt
   }
   
   this.authService.initproduct(user).subscribe(data=>{

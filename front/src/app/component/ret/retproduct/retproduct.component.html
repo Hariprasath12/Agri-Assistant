@@ -1,4 +1,9 @@
 
+<!-- <button type="button" class="btn btn-default" (click)="mapon()" id="button">Map View</button>&nbsp; &nbsp; -->
+<button class="btn btn-primary" type="button" id="button" (click)="viewcart()" >
+ Cart <span class="badge">{{cartitem.length}}</span>
+</button>
+
 <div id="map" *ngIf="map" >
 	
 
@@ -6,9 +11,94 @@
   <sebm-google-map-marker [latitude]="lat" [longitude]="lng" [label]="'Me'" [title]="'currentlocation'"></sebm-google-map-marker>
 </sebm-google-map>
 </div>
-<div id="prod">
+<div id="prod" *ngIf="list" >
+	<div class="container">
+	<div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="imaginary_container"> 
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control"  [(ngModel)]="queryString" id="search" placeholder="Search to type" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+<br><br>
+<div *ngIf="product"><div class="row">
+	<div *ngFor="let i of product">
+	<div *ngFor="let j of i.product ">
+
 	
+  <div class="col-sm-5 col-md-3">
+    <div class="thumbnail">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQowrXBsUOXk7JudmL7m18oYlsb2cGDlqlSHEf_yot9FPwyIJGB" alt="...">
+      <div class="caption">
+        <h3 align="center">{{j.name}}</h3>
+        <h3 align="center"> {{j.quantity}}</h3>
+        <p align="center">{{j.des}}</p>
+        <p align="center">{{j.rs | currency:'INR':true}}</p>
+         <div *ngIf="j.Active">
+           <p align="center"><a (click)="cart(j._id)" class="btn btn-primary" role="button" >Add Cart</a> </p>
+         </div>
+         <div *ngIf="!j.Active">
+           <p align="center"><a  class="btn btn-primary" role="button" disable>sold out</a> </p>
+         </div>
+
+        
+        
+      </div>
+    </div>
+  </div>
+
+	</div>
+		
+	</div></div>
+</div>
 	
+</div>
+<div *ngIf="cartview" >
+
+
+<div *ngFor="let i of itemde">
+  
+
+
+
+
+  <div class="jumbotron">
+  
+  
+  <h1>{{i.name}}</h1>
+<p> Quantity:{{i.quantity}} </p>
+  <p>Description:{{i.des}}</p>
+  <p> Date:{{i.date | date | uppercase }}</p>
+  <span> {{i.rs | currency:'INR':true}}</span>
+ 
+</div>
+
+</div>
+  <button type="button" class="btn btn-default" id="button" (click)="paymentpage()">Pay {{payment | currency:'INR':true}}</button>
+
+</div> 
+<div *ngIf="paymentview">
+<div *ngIf="pay">
+    <div class="jumbotron">
+  
+  
+  <p>Balance:{{balance}}</p>
+
+ <button type="button" class="btn btn-default" (click)="final()">pay{{payment | currency:'INR':true}}</button>
+ 
+</div>
+</div>
+<div *ngIf="!pay">
+  You are not having sufficient balance
+</div>
 </div>
 
 

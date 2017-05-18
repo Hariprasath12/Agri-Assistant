@@ -88,26 +88,7 @@ router.post('/profile', passport.authenticate('log', {
 
 
 });
-router.post('/inittrack', passport.authenticate('log', {session:false}), (req, res, next) => {
-   let pro, id;
-    pro = req.user;
-    id = pro.id;
 
-  var track={
-   
-    price:req.body.price,
-    user:req.body.user,
-    ref:req.body.ref,
-    to:req.body.to,
-    from:req.body.from,
-    expecteddate:req.body.date,
-}
-
-User.inittrack(track,id,(err,post)=>{
-   if(err) throw err;
-res.send(post);
-});
-});
 
 router.get('/trackbyid/:id', passport.authenticate('log', {session:false}), (req, res, next) => {
   

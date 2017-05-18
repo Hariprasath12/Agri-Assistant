@@ -1,15 +1,49 @@
 <div *ngIf="product">
 	<div *ngFor="let i of product">
-		{{i.name}}
-		{{i.quantity}}
-		{{i.des}}
-		{{i.date}}
-		<div *ngFor="let img of i.img">
+<!-- 	<ul class="list-group">
+  <li class="list-group-item">
+		<span>Product name: </span>
+		<span>{{i.quantity}} </span>
+		<span>{{i.des}}</span>
+		<span> {{i.date | date | uppercase }}</span>
+		</li>
+		</ul> -->
+		 <div class="col-sm-5 col-md-3">
+    <div class="thumbnail">
+      <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQowrXBsUOXk7JudmL7m18oYlsb2cGDlqlSHEf_yot9FPwyIJGB" alt="..."> -->
+      <div class="caption">
+        <h3 align="center">Name:{{i.name}}</h3>
+        <h3 align="center">Quantity:{{i.quantity}}</h3>
+        <p align="center">DES:{{i.des}}</p>
+        <p align="center">Amount:{{i.rs | currency:'INR':true}}</p>
+
+        
+        <p align="center">Date:{{i.date | date | uppercase }}</p>
+        <div *ngIf="!i.Active">
+        <p align="center"> sold out</p>
+        	
+        </div>
+      </div>
+    </div>
+  </div>
+		<!-- <div *ngFor="let img of i.img">
 			
 		<img src="../../{{img}}" alt="hello">
-		</div>
+		</div> -->
 	</div>
 </div> 
 <div *ngIf="!product">
 No Product 
 </div>
+
+
+
+
+ <!--  <ul class="list-group">
+  <li class="list-group-item">
+		<span>Product name: {{i.name}}</span>
+		<span>{{i.quantity}} </span>
+		<span>{{i.des}}</span>
+		<span> {{i.date | date | uppercase }}</span>
+		</li>
+		</ul> -->

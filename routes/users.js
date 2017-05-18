@@ -358,11 +358,19 @@ router.post('/productinit', passport.authenticate('users', {
      let pro, id;
     pro = req.user;
     id = pro.id;
-    const prd={
+    var lat;
+    var lon;
+User.getlocation(id,(err,loc)=>{
+
+});
+
+const prd={
         name:req.body.name,
          quantity:req.body.qua,
-          des:req.body.des
+          des:req.body.des,
+          rs:req.body.rs
     };
+
     User.initproduct(prd,id,(err,numy)=>{
        User.productbyid(id,(err,num)=>{
         let products=num[0].product;

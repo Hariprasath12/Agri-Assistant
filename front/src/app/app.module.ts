@@ -91,6 +91,7 @@ import { UserlocationComponent } from './component/user/userlocation/userlocatio
 import { LoglocationComponent } from './component/log/loglocation/loglocation.component';
 import { UserchatlistComponent } from './component/user/userchatlist/userchatlist.component';
 import { ProductlistComponent } from './component/user/productlist/productlist.component';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 
 
@@ -375,7 +376,8 @@ path:'',
     UserlocationComponent,
     LoglocationComponent,
     UserchatlistComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    FilterPipePipe
 
    
   ],

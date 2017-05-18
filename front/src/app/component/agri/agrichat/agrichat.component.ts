@@ -15,7 +15,7 @@ messages = [];
 connection; 
 message;
 socket;
-user="hari";
+user="ram";
 room="hjk";
 listuser=[];
 list;

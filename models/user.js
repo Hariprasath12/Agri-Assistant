@@ -60,11 +60,25 @@ type: String
             type: Boolean,
             default: Date.now
         },
+       lat:Number,
+       lon:Number,
         des:String,
+    rs:Number,
         track:{
         type: String,
         default: null
     },
+    prd_his:[{
+        id:String,
+        ref:String,
+        to:String,
+        date:{
+              type: Date,
+            default: Date.now
+
+        },
+
+    }],
 
         img: [],
         date:  {
@@ -173,8 +187,19 @@ const update={$push:{"cropdiary":crop}};
 const options={ multi: false}
 
     User.update(con,update,options,callback);
-}
 
+}
+module.exports.productsell = function(id, callback) {
+User.update({
+        product:{ $elemMatch:{_id:id}}
+    }, {
+       "$set": { 
+            "product.$.Active":false 
+        }
+    },callback);
+
+    
+}
 module.exports.favpost = function(id,ref, callback) {
 const con={_id:id};
 const update={$addToSet:{"fav_post":ref}};
@@ -230,7 +255,13 @@ module.exports.payment = function(id, callback) {
     User.findById(id, 'payment', callback);
 }
 
+module.exports.productid = function(id, callback) {
 
+    User.find({product:{ $elemMatch:{_id:id}}}
+        ,'product' ,callback);
+    
+    
+}
 
 module.exports.cropdDiary = function(id, callback) {
 
@@ -312,7 +343,7 @@ module.exports.updatePayment = function(id, det, callback) {
 
 }
 module.exports.initproduct = function(info, id, callback) {
-
+console.log(info);
 
     User.update({
         _id: id
@@ -342,7 +373,18 @@ module.exports.updateimg = function(img, id, callback) {
     }
 
 
+module.exports.prohis = function( data,id, callback) {
 
+
+    User.update({
+        product:{ $elemMatch:{_id:id}}
+    }, {
+        $push: {
+            "product.0.prd_his":data
+        }
+    },callback);
+    
+    }
 
 module.exports.productbyid = function( id, callback) {
     User.find({_id:id},'product',callback);
